@@ -1,11 +1,8 @@
-name: Sync upstream and update fork mods
+name: Update fork mods
 
-# Merges Fabulously-Optimized/fabulously-optimized into this fork, keeps the top 3
-# Packwiz MC folders, updates fork-only mods, and publishes zip+mrpack GitHub Releases.
-# Never pushes to the upstream repository.
+# Manually update fork-only Modrinth mods across retained Packwiz folders and
+# publish a new zip+mrpack GitHub Release when anything changes.
 on:
-  schedule:
-    - cron: "0 12 * * 1"
   workflow_dispatch:
 
 permissions:
@@ -16,10 +13,10 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  sync-and-update:
+  update-fork-mods:
     if: github.repository_owner != 'Fabulously-Optimized'
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    timeout-minutes: 45
     steps:
       - name: Checkout fork
         uses: actions/checkout@v4
@@ -38,50 +35,16 @@ jobs:
           echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
           packwiz --help >/dev/null
 
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: Record starting pack version
         id: start
         run: |
           START_VERSION="$(python3 "CLI tools/fork-version.py" print)"
           echo "version=$START_VERSION" >> "$GITHUB_OUTPUT"
-          echo "Start version: $START_VERSION"
-
-      - name: Add upstream remote (fetch only)
-        run: |
-          git remote add upstream https://github.com/Fabulously-Optimized/fabulously-optimized.git || true
-          git remote set-url --push upstream DISABLE
-          git fetch upstream main
-
-      - name: Merge upstream/main
-        id: merge
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git merge-base --is-ancestor upstream/main HEAD; then
-            echo "Already up to date with upstream/main."
-            echo "synced=false" >> "$GITHUB_OUTPUT"
-          else
-            git merge --no-ff upstream/main -m "Merge upstream Fabulously Optimized into fork"
-            echo "synced=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Prune older Packwiz version folders (keep top 3)
-        run: bash "CLI tools/prune-old-packwiz.sh" 3
-
-      - name: Disable upstream workflows and community docs if reintroduced
-        run: |
-          mkdir -p .github/upstream-workflows
-          for wf in auto-publish.yml git-repo-sync.yml; do
-            if [ -f ".github/workflows/$wf" ]; then
-              mv ".github/workflows/$wf" ".github/upstream-workflows/$wf"
-              echo "Disabled $wf"
-            fi
-          done
-          rm -f .github/FUNDING.yml .github/pull_request_template.md crowdin.yml cape.png \
-            CODE-OF-CONDUCT.md CONTRIBUTING.md SECURITY.md
-          rm -rf .github/ISSUE_TEMPLATE
-
-      - name: Rebrand newest pack.toml
-        run: python3 "CLI tools/rebrand-pack.py"
 
       - name: Update fork mods on all retained folders
         id: forkmods
@@ -97,18 +60,18 @@ jobs:
         id: version
         run: |
           ARGS=(decide --start-version "${{ steps.start.outputs.version }}" --env-out /tmp/version.env)
-          if [ "${{ steps.merge.outputs.synced }}" = "true" ]; then
-            ARGS+=(--upstream-synced)
-          fi
           if [ "${{ steps.forkmods.outputs.changed }}" = "true" ]; then
             ARGS+=(--fork-mods-changed)
           fi
           python3 "CLI tools/fork-version.py" "${ARGS[@]}"
-          python3 "CLI tools/ensure-initial-fork-suffix.py" --env-file /tmp/version.env
           cat /tmp/version.env >> "$GITHUB_ENV"
           cat /tmp/version.env
 
-      - name: Update changelog when releasing
+      - name: Stop if nothing to release
+        if: env.RELEASE != 'true'
+        run: echo "No fork-mod updates to release."
+
+      - name: Update changelog
         if: env.RELEASE == 'true'
         run: |
           python3 "CLI tools/update-changelog.py" \
@@ -116,33 +79,14 @@ jobs:
             --version "$VERSION" \
             --fragment /tmp/fork-mods.md \
             --reason "${{ env.REASON }}"
-          # Refresh pack index after version bump
           newest="$(find Packwiz -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -V | tail -n1)"
           (cd "Packwiz/$newest" && packwiz refresh -y)
 
-      - name: Commit changes
-        id: commit
+      - name: Commit and push
+        if: env.RELEASE == 'true'
         run: |
-          if git diff --quiet && git diff --cached --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
-            echo "committed=false" >> "$GITHUB_OUTPUT"
-            echo "No changes to commit."
-            exit 0
-          fi
           git add -A
-          if [ "${{ env.RELEASE }}" = "true" ]; then
-            MSG="Release Together Optimized ${{ env.VERSION }}"
-          elif [ "${{ steps.merge.outputs.synced }}" = "true" ]; then
-            MSG="Apply fork maintenance after upstream sync"
-          else
-            MSG="Update fork mods"
-          fi
-          git commit -m "$MSG"
-          echo "committed=true" >> "$GITHUB_OUTPUT"
-
-      - name: Push to fork origin only
-        if: steps.commit.outputs.committed == 'true'
-        run: |
-          git remote -v
+          git commit -m "Release Together Optimized ${VERSION}"
           git push origin HEAD:${{ github.ref_name }}
 
       - name: Export release artifacts

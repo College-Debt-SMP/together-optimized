@@ -38,7 +38,9 @@ Upstream source code remains under the terms in [LICENSE.md](LICENSE.md). Togeth
 ```bash
 git fetch upstream
 git merge upstream/main
-bash "CLI tools/prune-old-packwiz.sh"
+bash "CLI tools/prune-old-packwiz.sh" 3
+python3 "CLI tools/rebrand-pack.py"
+python3 "CLI tools/update-fork-mods.py"
 ```
 
-Or run the **Sync upstream Fabulously Optimized** GitHub Action on this fork. Push is disabled for the `upstream` remote so nothing is posted to the original FO repository.
+Or run the **Sync upstream and update fork mods** / **Update fork mods** GitHub Actions on this fork. Push is disabled for the `upstream` remote so nothing is posted to the original FO repository. Releases publish CurseForge `.zip` and Modrinth `.mrpack` assets to GitHub Releases.

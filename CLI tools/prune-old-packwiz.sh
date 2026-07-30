@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# Keep only the latest Minecraft version directory under Packwiz/.
+# Keep the top N most recent Minecraft version directories under Packwiz/.
 # Shared Packwiz root files (README, scripts, mmc-export.toml) are preserved.
 set -euo pipefail
 
+KEEP_COUNT="${1:-3}"
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
 packwiz_dir="$repo_root/Packwiz"
 
@@ -20,12 +21,16 @@ if [[ ${#versions[@]} -eq 0 ]]; then
   exit 1
 fi
 
-latest="${versions[-1]}"
-echo "Keeping Packwiz/$latest"
+if (( ${#versions[@]} <= KEEP_COUNT )); then
+  echo "Keeping all ${#versions[@]} Packwiz version folder(s): ${versions[*]}"
+  exit 0
+fi
 
-for version in "${versions[@]}"; do
-  if [[ "$version" != "$latest" ]]; then
-    echo "Removing Packwiz/$version"
-    rm -rf "$packwiz_dir/$version"
-  fi
+keep_start=$(( ${#versions[@]} - KEEP_COUNT ))
+keep=("${versions[@]:keep_start}")
+echo "Keeping Packwiz folders: ${keep[*]}"
+
+for version in "${versions[@]:0:keep_start}"; do
+  echo "Removing Packwiz/$version"
+  rm -rf "$packwiz_dir/$version"
 done

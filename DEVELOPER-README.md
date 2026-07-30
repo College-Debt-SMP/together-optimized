@@ -9,8 +9,10 @@ Based on [Fabulously Optimized](https://github.com/Fabulously-Optimized/fabulous
 * `Packwiz/26.2/` — current pack metadata, configs, and resource-pack references
 * `CLI tools/` — maintainer helpers (including `prune-old-packwiz.sh`)
 * `CurseForge/`, `Modrinth/`, `MultiMC/`, `MultiMC-Packwiz/` — export scaffolding inherited from upstream
-* `.github/workflows/sync-upstream.yml` — merges upstream FO into this fork; never pushes to FO
+* `.github/workflows/sync-upstream.yml` — merge upstream FO, prune to top 3 MC folders, update fork mods, publish zip+mrpack GitHub Releases (never pushes to FO)
+* `.github/workflows/update-fork-mods.yml` — manual fork-mod-only update + release
 * `.github/upstream-workflows/` — disabled upstream GitHub Actions (publish / Bitbucket sync)
+* `CLI tools/fork-mods.txt` — Modrinth slugs maintained independently of FO
 
 ## Notes
 

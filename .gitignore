@@ -6,3 +6,6 @@ Packwiz/*/resourcepacks/Chat Reporting Helper.zip
 Packwiz/*/resourcepacks/SodiumTranslations.zip
 .DS_Store
 .vscode
+dist/
+.ci-version-decision.env
+**/__pycache__/

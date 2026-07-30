@@ -1,0 +1,7 @@
+# Fork-only Modrinth project slugs (one per line).
+# These are updated independently of upstream Fabulously Optimized.
+simple-voice-chat
+vivecraft
+voxy
+nvidium
+reflex-antilag
