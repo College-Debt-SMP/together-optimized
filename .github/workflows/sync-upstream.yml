@@ -1,0 +1,65 @@
+name: Sync upstream Fabulously Optimized
+
+# Merges Fabulously-Optimized/fabulously-optimized into this fork.
+# Never pushes to the upstream repository.
+on:
+  schedule:
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.repository_owner != 'Fabulously-Optimized'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add upstream remote (fetch only)
+        run: |
+          git remote add upstream https://github.com/Fabulously-Optimized/fabulously-optimized.git
+          git remote set-url --push upstream DISABLE
+          git fetch upstream main
+
+      - name: Merge upstream/main
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          if git merge-base --is-ancestor upstream/main HEAD; then
+            echo "Already up to date with upstream/main."
+            echo "synced=false" >> "$GITHUB_ENV"
+          else
+            git merge --no-ff upstream/main -m "Merge upstream Fabulously Optimized into fork"
+            echo "synced=true" >> "$GITHUB_ENV"
+          fi
+
+      - name: Prune older Packwiz version directories
+        if: env.synced == 'true'
+        run: bash "CLI tools/prune-old-packwiz.sh"
+
+      - name: Commit prune if needed
+        if: env.synced == 'true'
+        run: |
+          if ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
+            git add -A Packwiz
+            git commit -m "Prune older Packwiz versions after upstream sync"
+          else
+            echo "No Packwiz prune changes to commit."
+          fi
+
+      - name: Push to fork origin only
+        if: env.synced == 'true'
+        run: |
+          git remote -v
+          git push origin HEAD:${{ github.ref_name }}
