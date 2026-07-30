@@ -5,7 +5,7 @@ $mods = @(
     'AnotherMod.jar'
 )
 
-# Upgrading Fabulously Optimized
+# Upgrading Together Optimized
 Write-Output "Checking for FO updates..."
 Set-Location ..
 
@@ -23,7 +23,7 @@ if (Test-Path -Path ".\.minecraft") {
 $processOptions = @{
     FilePath = $Env:INST_JAVA
     ArgumentList = "-jar packwiz-installer-bootstrap.jar",
-        "https://raw.githubusercontent.com/Fabulously-Optimized/fabulously-optimized/main/Packwiz/$mcVersion/pack.toml"
+        "https://raw.githubusercontent.com/College-Debt-SMP/together-optimized/main/Packwiz/$mcVersion/pack.toml"
 }
 Start-Process @processOptions -Wait
 

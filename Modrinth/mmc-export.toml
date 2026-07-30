@@ -1,6 +1,6 @@
-name = "Fabulously Optimized"
-author = "robotkoer"
-description = "Improve your graphics and performance with this simple modpack."
+name = "Together Optimized"
+author = "CherryQuartzio"
+description = "Private Fabric modpack for College Debt SMP, based on Fabulously Optimized."
 
 [[Resource]]
 name = "Don't Clear Chat History"

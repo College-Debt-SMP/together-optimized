@@ -1,6 +1,6 @@
 {
     "fo.resourcePack.modmenuhelper": "§7Loetleb Mod Menus modide põhifunktsioone ja -valikuid§r",
-    "modmenu.dropInfo.line1": "§9🛠§r/§8🛠§r - FO mod, saadaolevad valikud; §6🔀§r - FO alternatiivne mod;",
+    "modmenu.dropInfo.line1": "§9🛠§r/§8🛠§r - Together Optimized mod, saadaolevad valikud; §6🔀§r - FO alternatiivne mod;",
     "modmenu.dropInfo.line2": "§3§l📥§r - mõju nägemiseks on vaja kohandatud ressursipakki",
     "modmenu.summaryTranslation.animatica": "OptiFine'i kohandatud animatsioonid\n§3§l📥§r§8🛠 (vaid edasijõudnute valikud)",
     "modmenu.summaryTranslation.betterbeds": "§6🔀§r Kiiremad voodid\n§8§m🛠§8 (valikud puuduvad)",
@@ -65,5 +65,5 @@
     "menu.multiplayerOptions.lan": "Kohtvõrk ja Internet",
     "menu.multiplayerOptions.network.lan.tooltip": "Samas võrgus olevad mängijad saavad liituda kohtvõrgu kaudu; mängijad kõikjal maailmas saavad liituda sinu jagatud aadressi kaudu.",
     "accessibility.onboarding.screen.narrator": "",
-    "accessibility.onboarding.screen.title": "Tere tulemast §7Fabulously Optimized§r'i! Siin on mõned nõuanded.\n\n§f🪟§r Ühendatud tekstuurid, dünaamiline valgustus - seadista menüüs §7Modid§r\n§a🏞§r Parem muru ja Alt+Tab toega täisekraan - luba §7graafikaseadetes§r\n§e✨§r Varjutajad ja uhked ressursipakid - §7lisa ja luba§r\n§5🎮§r Mängupuldid on toetatud - lihtsalt §7ühenda ja kasuta§r\n§3🛜§r Mängi sõpradega kõikjal - vajuta üksikmängus §7Ava Internetti§r\n§8📸§r Tee 4K-kuvatõmmiseid - vajuta §7F9§r\n§6🏴§r Tasuta kohandatud keebid - §7https://download.fo/cape§r\n§b🌐§r Aita modipakki tõlkida - §7https://download.fo/translate§r\n§2➕§r Lisa rohkem mode - §7https://download.fo/add§r\n§4❓§r Probleemid või küsimused - §7https://download.fo/wiki§r\n\n(§7Maksimeeri aken§r või külasta §7https://download.fo/tutorial§r)"
+    "accessibility.onboarding.screen.title": "Welcome to §7Together Optimized§r!\n\n§f🪟§r Connected Textures and Dynamic Lights - configure in §7Mods§r\n§a🏞§r Better Grass and fullscreen with Alt+Tab - enable in §7Video Settings§r\n§e✨§r Shaders and fancy resource packs - just §7add and enable§r\n§5🎮§r Game controllers supported - simply §7connect and use§r\n§3🛜§r Play with friends - press §7Open to Internet§r in singleplayer, or use voice chat\n§6🥽§r VR supported via Vivecraft when available\n\nPrivate pack for College Debt SMP."
 }

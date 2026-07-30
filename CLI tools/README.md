@@ -1,1 +1,1 @@
-These files are for the maintainer(s) of Fabulously Optimized, used to copy files faster across folders. Feel free to improve them by making a PR.
+These scripts help maintain Together Optimized (and were originally written for Fabulously Optimized maintainers). Adapt paths and version variables as needed before running them.

@@ -1,6 +1,6 @@
 # Included mods
 
-Mods included in the latest version of the pack (Minecraft 26.2). The selected mods are inspired, but not limited by the [list of OptiFine alternatives](https://lambdaurora.dev/optifine_alternatives). The modpack also [improves the default settings](https://fabulously-optimized.gitbook.io/modpack/readme/changed-options).
+Mods included in **Together Optimized** (Minecraft 26.2). The selected mods are inspired, but not limited by the [list of OptiFine alternatives](https://lambdaurora.dev/optifine_alternatives). This pack is a fork of [Fabulously Optimized](https://github.com/Fabulously-Optimized/fabulously-optimized) with additional mods for College Debt SMP.
 
 ## Smooth
 | Name | Author | Description |
@@ -26,7 +26,7 @@ Mods included in the latest version of the pack (Minecraft 26.2). The selected m
 | [Animatica Refabricated](https://www.curseforge.com/minecraft/mc-mods/animatica-refabricated) | [coredex](https://www.curseforge.com/members/coredex) | Adds OptiFine's animated textures support |
 | [BetterGrassify](https://www.curseforge.com/minecraft/mc-mods/bettergrassify) | [UltimatChamp](https://www.curseforge.com/members/ultimatchamp) | Adds OptiFine's "better grass" and "better snow" |
 | [Better Mount Hud](https://www.curseforge.com/minecraft/mc-mods/better-mount-hud) | [Lortseam_](https://www.curseforge.com/members/Lortseam_) | Shows horse health and player's food via HUD at the same time, Automatically changes to jump bar when jumping with horse |
-| [Cape Provider](https://www.curseforge.com/minecraft/mc-mods/cape-provider) | [litetex](https://www.curseforge.com/members/litetex) | Adds OptiFine's and other mods' capes, [(instructions for a free cape)](https://wiki.download.fo/free-cape) |
+| [Cape Provider](https://www.curseforge.com/minecraft/mc-mods/cape-provider) | [litetex](https://www.curseforge.com/members/litetex) | Adds OptiFine's and other mods' capes |
 | [Continuity](https://www.curseforge.com/minecraft/mc-mods/continuity) | [Pepper_Bell](https://www.curseforge.com/members/Pepper_Bell) | Adds OptiFine's connected textures support |
 | [Entity Model Features](https://www.curseforge.com/minecraft/mc-mods/entity-model-features) | [traben_0](https://www.curseforge.com/members/traben_0) | Adds OptiFine's custom entity models |
 | [Entity Texture Features](https://www.curseforge.com/minecraft/mc-mods/entity-texture-features-fabric) | [traben_0](https://www.curseforge.com/members/traben_0) | Adds OptiFine's random and emissive mobs support |
@@ -49,7 +49,7 @@ Mods included in the latest version of the pack (Minecraft 26.2). The selected m
 | [Controlify](https://www.curseforge.com/minecraft/mc-mods/controlify) | [isXander](https://www.curseforge.com/members/xanderisdev) | Adds controller support that is better than Bedrock's |
 | [Crash Assistant](https://www.curseforge.com/minecraft/mc-mods/crash-assistant) | [KostromDan](https://www.curseforge.com/members/kostromdan/) | Helps finding logs and causes of a crash |
 | [Cubes Without Borders](https://www.curseforge.com/minecraft/mc-mods/cubes-without-borders) | [Kir_Antipov](https://www.curseforge.com/members/kir_antipov/) | Allows you to have Minecraft in full screen and interact with a different window (disabled by default) |
-| [Debugify](https://www.curseforge.com/minecraft/mc-mods/debugify) | [isXander](https://www.curseforge.com/members/xanderisdev) | Fixes [a set of bugs](https://fabulously-optimized.gitbook.io/modpack/readme/changed-options#fixed-bugs), disables sending diagnostics data to Mojang |
+| [Debugify](https://www.curseforge.com/minecraft/mc-mods/debugify) | [isXander](https://www.curseforge.com/members/xanderisdev) | Fixes various vanilla bugs and disables sending diagnostics data to Mojang |
 | [Main Menu Credits](https://www.curseforge.com/minecraft/mc-mods/main-menu-credits) | [isXander](https://www.curseforge.com/members/xanderisdev) | Adds modpack's clickable version number in title screen's bottom corner |
 | [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu) | [TerraformersMC](https://www.curseforge.com/members/TerraformersMC) | Adds a mod list with descriptions (keep bundled resource pack enabled for better experience!) |
 | [More Chat History](https://www.curseforge.com/minecraft/mc-mods/more-chat-history) | [JackFred2](https://www.curseforge.com/members/JackFred2) | Increases chat history limit |

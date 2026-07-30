@@ -48,14 +48,28 @@ jobs:
         if: env.synced == 'true'
         run: bash "CLI tools/prune-old-packwiz.sh"
 
-      - name: Commit prune if needed
+      - name: Disable upstream workflows and community docs if reintroduced
+        if: env.synced == 'true'
+        run: |
+          mkdir -p .github/upstream-workflows
+          for wf in auto-publish.yml git-repo-sync.yml; do
+            if [ -f ".github/workflows/$wf" ]; then
+              mv ".github/workflows/$wf" ".github/upstream-workflows/$wf"
+              echo "Disabled $wf"
+            fi
+          done
+          rm -f .github/FUNDING.yml .github/pull_request_template.md crowdin.yml cape.png \
+            CODE-OF-CONDUCT.md CONTRIBUTING.md SECURITY.md
+          rm -rf .github/ISSUE_TEMPLATE
+
+      - name: Commit fork maintenance if needed
         if: env.synced == 'true'
         run: |
           if ! git diff --quiet || ! git diff --cached --quiet || [ -n "$(git ls-files --others --exclude-standard)" ]; then
-            git add -A Packwiz
-            git commit -m "Prune older Packwiz versions after upstream sync"
+            git add -A Packwiz .github/workflows .github/upstream-workflows
+            git commit -m "Apply fork maintenance after upstream sync"
           else
-            echo "No Packwiz prune changes to commit."
+            echo "No fork maintenance changes to commit."
           fi
 
       - name: Push to fork origin only

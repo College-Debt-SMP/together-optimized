@@ -60,5 +60,5 @@
     "menu.shareToLan": "在網路上公開",
     "lanServer.start": "在網路上公開",
     "accessibility.onboarding.screen.narrator": "",
-    "accessibility.onboarding.screen.title": "歡迎使用 §7Fabulously Optimized§r！這裡有一些小撇步：\n\n§f🪟§r 連接紋理與動態光源 — 請至§7模組§r中設定\n§a🏞§r 更好的草地與 Alt+Tab 全螢幕 — 請至§7顯示設定§r中啟用\n§e✨§r 光影與精美資源包 — 只要§7新增並啟用§r即可\n§5🎮§r 支援遊戲控制器 — 只要§7連接即可使用§r\n§3🛜§r 隨時隨地與好友同樂 — 在單人遊戲中按下 §7開放至網際網路§r\n§8📸§r 擷取 4K 螢幕畫面 — 請按 §7F9§r\n§6🏴§r 免費自訂披風 — §7https://download.fo/cape§r\n§b🌐§r 協助翻譯這個模組包 — §7https://download.fo/translate§r\n§2➕§r 新增額外模組 — §7https://download.fo/add§r\n§4❓§r 有任何問題或疑問 — §7https://download.fo/wiki§r\n\n（§7將視窗最大化§r或造訪 §7https://download.fo/tutorial§r）"
+    "accessibility.onboarding.screen.title": "Welcome to §7Together Optimized§r!\n\n§f🪟§r Connected Textures and Dynamic Lights - configure in §7Mods§r\n§a🏞§r Better Grass and fullscreen with Alt+Tab - enable in §7Video Settings§r\n§e✨§r Shaders and fancy resource packs - just §7add and enable§r\n§5🎮§r Game controllers supported - simply §7connect and use§r\n§3🛜§r Play with friends - press §7Open to Internet§r in singleplayer, or use voice chat\n§6🥽§r VR supported via Vivecraft when available\n\nPrivate pack for College Debt SMP."
 }

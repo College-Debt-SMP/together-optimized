@@ -1,1 +1,1 @@
-Modrinth packs are generated with [packwiz](https://github.com/packwiz/packwiz) or [mmc-export](https://github.com/RozeFound/mmc-export) using the scripts [CurseForge to Packwiz-Modrinth.py](https://github.com/Fabulously-Optimized/fabulously-optimized/blob/main/CLI%20tools/CurseForge%20to%20Packwiz-Modrinth.py).
+Modrinth packs can be generated with [packwiz](https://github.com/packwiz/packwiz) (`packwiz modrinth export` from `Packwiz/26.2`) or [mmc-export](https://github.com/RozeFound/mmc-export). Together Optimized is not published to Modrinth at this time.

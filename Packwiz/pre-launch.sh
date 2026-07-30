@@ -10,8 +10,8 @@ mod3=
 mod4=
 mod5=
 
-# Upgrading Fabulously Optimized
-echo "Checking for Fabulously Optimized upgrades..."
+# Upgrading Together Optimized
+echo "Checking for Together Optimized upgrades..."
 cd ..
 mcver="$(jq -r '.components[]|select(.cachedName=="Minecraft")|.version' mmc-pack.json)"
 if [ -d .minecraft ]; then
@@ -19,7 +19,7 @@ if [ -d .minecraft ]; then
 else
 	cd minecraft/
 fi
-"$INST_JAVA" -jar packwiz-installer-bootstrap.jar https://raw.githubusercontent.com/Fabulously-Optimized/fabulously-optimized/main/Packwiz/${mcver}/pack.toml
+"$INST_JAVA" -jar packwiz-installer-bootstrap.jar https://raw.githubusercontent.com/College-Debt-SMP/together-optimized/main/Packwiz/${mcver}/pack.toml
 
 # Disabling the mods
 echo "Disabling mods..."

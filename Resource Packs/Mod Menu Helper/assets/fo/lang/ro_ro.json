@@ -1,6 +1,6 @@
 {
     "fo.resourcePack.modmenuhelper": "§7Listeaza caracteristicile si optiunile modurilor in Mod Menu§r",
-    "modmenu.dropInfo.line1": "§9🛠§r/§8🛠§r - FO mod, opțiuni disponibile; §6🔀§r - FO mod alternativ;",
+    "modmenu.dropInfo.line1": "§9🛠§r/§8🛠§r - Together Optimized mod, opțiuni disponibile; §6🔀§r - Together Optimized mod alternativ;",
     "modmenu.dropInfo.line2": "§3§l📥§r - un pachet de resurse custom este necesar pentru a vedea efectul",
     "modmenu.summaryTranslation.animatica": "OptiFine's Custom Animations\n§3§l📥§r§8🛠 (numai opțiuni avansate)",
     "modmenu.summaryTranslation.betterbeds": "§6🔀§r Paturi mai optimizate\n§8§m🛠§8 (fără opțiuni)",
@@ -64,5 +64,5 @@
     "menu.shareToLan": "Deschis către internet",
     "lanServer.start": "Deschis către internet",
     "accessibility.onboarding.screen.narrator": "",
-    "accessibility.onboarding.screen.title": "Bine ați venit la §7Fabulously Optimized§r! Iată câteva sfaturi.\n\n§f🪟§r Texturi conectate și lumini dinamice - configurați în §7Mods§r\n§a🏞§r Grass mai bun și ecran complet cu Alt+Tab - activați în §7Video Settings§r\n§e✨§r Shaderi și pachete de resurse fanteziste - doar §7adăugați și activați§r\n§5🎮§r Controlere de joc acceptate - doar §7conectați și utilizați§r\n§3🛜§r Jucați cu prietenii, oriunde - apăsați §7Open to Internet§r în singleplayer\n§8📸§r Faceți capturi de ecran 4K - apăsați §7F9§r\n§6🏴§r Capace personalizate gratuite - §7https://download.fo/cape§r\n§b🌐§r Ajută la traducerea modpack-ului - §7https://download.fo/translate§r\n§2➕§r Adaugă mod-uri suplimentare - §7https://download.fo/add§r\n§4❓§r Probleme sau întrebări - §7https://download.fo/wiki§r\n\n(§7Maximize window§r sau vizitează §7https://download.fo/tutorial§r)"
+    "accessibility.onboarding.screen.title": "Welcome to §7Together Optimized§r!\n\n§f🪟§r Connected Textures and Dynamic Lights - configure in §7Mods§r\n§a🏞§r Better Grass and fullscreen with Alt+Tab - enable in §7Video Settings§r\n§e✨§r Shaders and fancy resource packs - just §7add and enable§r\n§5🎮§r Game controllers supported - simply §7connect and use§r\n§3🛜§r Play with friends - press §7Open to Internet§r in singleplayer, or use voice chat\n§6🥽§r VR supported via Vivecraft when available\n\nPrivate pack for College Debt SMP."
 }
