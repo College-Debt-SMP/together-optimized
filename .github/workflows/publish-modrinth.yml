@@ -26,6 +26,12 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
+      - name: Checkout tooling (default branch)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
       - name: Resolve release tag
         id: tag
         env:
@@ -50,23 +56,6 @@ jobs:
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "Resolved tag=$TAG version=$VERSION"
-
-      - name: Checkout tagged commit
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ steps.tag.outputs.tag }}
-          persist-credentials: false
-
-      - name: Detect Minecraft version from Packwiz
-        id: mc
-        run: |
-          MC="$(find Packwiz -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -V | tail -n1)"
-          if [ -z "$MC" ]; then
-            echo "No Packwiz version folders found." >&2
-            exit 1
-          fi
-          echo "version=$MC" >> "$GITHUB_OUTPUT"
-          echo "Minecraft version: $MC"
 
       - name: Resolve version type and changelog
         id: meta
@@ -105,62 +94,25 @@ jobs:
           ls -lh dist/
           test -n "$(find dist -maxdepth 1 -name 'Together.Optimized-*.mrpack' -print -quit)"
 
+      - name: Detect Minecraft version from mrpack
+        id: mc
+        run: |
+          MRPACK="$(find dist -maxdepth 1 -name 'Together.Optimized-*.mrpack' -print -quit)"
+          MC="$(unzip -p "$MRPACK" modrinth.index.json | python3 -c 'import json,sys; print(json.load(sys.stdin)["dependencies"]["minecraft"])')"
+          if [ -z "$MC" ]; then
+            echo "Could not read minecraft version from mrpack." >&2
+            exit 1
+          fi
+          echo "version=$MC" >> "$GITHUB_OUTPUT"
+          echo "Minecraft version: $MC"
+
       # mc-publish expects a base62 project id; slugs with hyphens fail Modrinth's API.
       - name: Resolve Modrinth project id
         id: modrinth
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
         run: |
-          UA="together-optimized-ci (github.com/College-Debt-SMP/together-optimized)"
-          auth_curl() {
-            curl -sS -w "\n%{http_code}" \
-              -H "Authorization: ${MODRINTH_TOKEN}" \
-              -H "User-Agent: ${UA}" \
-              "$@"
-          }
-
-          RAW="$(auth_curl "https://api.modrinth.com/v2/project/together-optimized")"
-          HTTP="$(printf '%s' "$RAW" | tail -n1)"
-          BODY="$(printf '%s' "$RAW" | sed '$d')"
-          PROJECT_ID=""
-
-          if [ "$HTTP" = "200" ]; then
-            PROJECT_ID="$(printf '%s' "$BODY" | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')"
-          else
-            echo "Direct project lookup HTTP $HTTP; searching owned projects..."
-            USER_RAW="$(auth_curl "https://api.modrinth.com/v2/user")"
-            USER_HTTP="$(printf '%s' "$USER_RAW" | tail -n1)"
-            USER_BODY="$(printf '%s' "$USER_RAW" | sed '$d')"
-            if [ "$USER_HTTP" != "200" ]; then
-              echo "Failed to resolve Modrinth user (HTTP $USER_HTTP): $USER_BODY" >&2
-              exit 1
-            fi
-            USER_ID="$(printf '%s' "$USER_BODY" | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')"
-            echo "Authenticated Modrinth user id: $USER_ID"
-            PROJ_RAW="$(auth_curl "https://api.modrinth.com/v2/user/${USER_ID}/projects")"
-            PROJ_HTTP="$(printf '%s' "$PROJ_RAW" | tail -n1)"
-            PROJ_BODY="$(printf '%s' "$PROJ_RAW" | sed '$d')"
-            if [ "$PROJ_HTTP" != "200" ]; then
-              echo "Failed to list projects (HTTP $PROJ_HTTP): $PROJ_BODY" >&2
-              exit 1
-            fi
-            PROJECT_ID="$(printf '%s' "$PROJ_BODY" | python3 -c "
-import json, sys
-projects = json.load(sys.stdin)
-for p in projects:
-    if p.get('slug') == 'together-optimized' or p.get('title', '').lower() == 'together optimized':
-        print(p['id'])
-        break
-else:
-    print('Owned projects:', file=sys.stderr)
-    for p in projects:
-        print('  {id} slug={slug} title={title} type={ptype} status={status}'.format(
-            id=p.get('id'), slug=p.get('slug'), title=p.get('title'),
-            ptype=p.get('project_type'), status=p.get('status')), file=sys.stderr)
-    sys.exit(1)
-")"
-          fi
-
+          PROJECT_ID="$(python3 "CLI tools/resolve-modrinth-project.py")"
           if [ -z "$PROJECT_ID" ]; then
             echo "Could not resolve Modrinth project id for together-optimized" >&2
             exit 1
