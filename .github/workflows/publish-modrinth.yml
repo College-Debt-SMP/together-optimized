@@ -1,0 +1,120 @@
+name: Publish to Modrinth
+
+# Uploads the Together Optimized .mrpack from a GitHub Release to
+# https://modrinth.com/modpack/together-optimized. Not published to CurseForge.
+# Named publish-modrinth.yml (not auto-publish.yml) so sync-upstream does not disable it.
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "GitHub release tag to publish (leave empty for latest)"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-modrinth
+  cancel-in-progress: false
+
+jobs:
+  publish-to-modrinth:
+    if: github.repository_owner != 'Fabulously-Optimized'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Resolve release tag
+        id: tag
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          EVENT_NAME: ${{ github.event_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          INPUT_TAG: ${{ inputs.tag }}
+        run: |
+          if [ "$EVENT_NAME" = "release" ]; then
+            TAG="$RELEASE_TAG"
+          elif [ -n "$INPUT_TAG" ]; then
+            TAG="$INPUT_TAG"
+          else
+            TAG="$(gh release list -R "$GH_REPO" --limit 1 --json tagName --jq '.[0].tagName')"
+          fi
+          if [ -z "$TAG" ]; then
+            echo "No release tag found." >&2
+            exit 1
+          fi
+          VERSION="${TAG#v}"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Resolved tag=$TAG version=$VERSION"
+
+      - name: Checkout tagged commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.tag.outputs.tag }}
+          persist-credentials: false
+
+      - name: Detect Minecraft version from Packwiz
+        id: mc
+        run: |
+          MC="$(find Packwiz -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -V | tail -n1)"
+          if [ -z "$MC" ]; then
+            echo "No Packwiz version folders found." >&2
+            exit 1
+          fi
+          echo "version=$MC" >> "$GITHUB_OUTPUT"
+          echo "Minecraft version: $MC"
+
+      - name: Resolve version type and changelog
+        id: meta
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          VERSION: ${{ steps.tag.outputs.version }}
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          case "$VERSION" in
+            *alpha*) TYPE=alpha ;;
+            *beta*) TYPE=beta ;;
+            *) TYPE=release ;;
+          esac
+          echo "version_type=$TYPE" >> "$GITHUB_OUTPUT"
+
+          BODY="$(gh release view "$TAG" -R "$GH_REPO" --json body --jq '.body // empty')"
+          {
+            echo "changelog<<EOF"
+            if [ -n "$BODY" ]; then
+              printf '%s\n' "$BODY"
+            else
+              echo "Together Optimized ${VERSION}"
+            fi
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Download mrpack from GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          mkdir -p dist
+          gh release download "$TAG" -R "$GH_REPO" -D dist -p "Together.Optimized-*.mrpack"
+          ls -lh dist/
+          test -n "$(find dist -maxdepth 1 -name 'Together.Optimized-*.mrpack' -print -quit)"
+
+      - name: Publish to Modrinth
+        uses: Kira-NT/mc-publish@995edadc13559a8b28d0b7e6571229f067ec7659 # v3.3.0
+        with:
+          name: Together Optimized ${{ steps.tag.outputs.version }} for ${{ steps.mc.outputs.version }}
+          version: ${{ steps.tag.outputs.version }}
+          version-type: ${{ steps.meta.outputs.version_type }}
+          changelog: ${{ steps.meta.outputs.changelog }}
+          modrinth-id: together-optimized
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-unfeature-mode: none
+          files: dist/Together.Optimized-*.mrpack
+          loaders: fabric
+          game-versions: ${{ steps.mc.outputs.version }}
