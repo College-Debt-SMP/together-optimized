@@ -105,6 +105,22 @@ jobs:
           ls -lh dist/
           test -n "$(find dist -maxdepth 1 -name 'Together.Optimized-*.mrpack' -print -quit)"
 
+      # mc-publish expects a base62 project id; slugs with hyphens fail Modrinth's API.
+      - name: Resolve Modrinth project id
+        id: modrinth
+        env:
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+        run: |
+          RESP="$(curl -fsS -H "Authorization: ${MODRINTH_TOKEN}" \
+            "https://api.modrinth.com/v2/project/together-optimized")"
+          PROJECT_ID="$(printf '%s' "$RESP" | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')"
+          if [ -z "$PROJECT_ID" ]; then
+            echo "Could not resolve Modrinth project id for together-optimized" >&2
+            exit 1
+          fi
+          echo "project_id=$PROJECT_ID" >> "$GITHUB_OUTPUT"
+          echo "Resolved Modrinth project id: $PROJECT_ID"
+
       - name: Publish to Modrinth
         uses: Kira-NT/mc-publish@995edadc13559a8b28d0b7e6571229f067ec7659 # v3.3.0
         with:
@@ -112,9 +128,10 @@ jobs:
           version: ${{ steps.tag.outputs.version }}
           version-type: ${{ steps.meta.outputs.version_type }}
           changelog: ${{ steps.meta.outputs.changelog }}
-          modrinth-id: together-optimized
+          modrinth-id: ${{ steps.modrinth.outputs.project_id }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           modrinth-unfeature-mode: none
           files: dist/Together.Optimized-*.mrpack
           loaders: fabric
           game-versions: ${{ steps.mc.outputs.version }}
+          game-version-filter: none
