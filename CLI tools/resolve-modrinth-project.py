@@ -40,6 +40,11 @@ def request(path: str, token: str) -> tuple[int, object]:
 
 
 def main() -> int:
+    preset = os.environ.get("MODRINTH_PROJECT_ID", "").strip()
+    if preset:
+        print(preset)
+        return 0
+
     token = os.environ.get("MODRINTH_TOKEN", "").strip()
     if not token:
         print("MODRINTH_TOKEN is not set", file=sys.stderr)
@@ -53,7 +58,12 @@ def main() -> int:
     print(f"Direct project lookup HTTP {status}; searching owned projects...", file=sys.stderr)
     status, user = request("/user", token)
     if status != 200 or not isinstance(user, dict):
-        print(f"Failed to resolve Modrinth user (HTTP {status}): {payload}", file=sys.stderr)
+        print(
+            f"Failed to resolve Modrinth user (HTTP {status}): {user}\n"
+            "PAT needs USER_READ + PROJECT_READ to look up draft projects, "
+            "or set repo variable MODRINTH_PROJECT_ID to the base62 project id.",
+            file=sys.stderr,
+        )
         return 1
 
     user_id = user["id"]

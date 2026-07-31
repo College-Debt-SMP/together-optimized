@@ -111,6 +111,7 @@ jobs:
         id: modrinth
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          MODRINTH_PROJECT_ID: ${{ vars.MODRINTH_PROJECT_ID }}
         run: |
           PROJECT_ID="$(python3 "CLI tools/resolve-modrinth-project.py")"
           if [ -z "$PROJECT_ID" ]; then
