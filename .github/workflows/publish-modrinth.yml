@@ -111,9 +111,56 @@ jobs:
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
         run: |
-          RESP="$(curl -fsS -H "Authorization: ${MODRINTH_TOKEN}" \
-            "https://api.modrinth.com/v2/project/together-optimized")"
-          PROJECT_ID="$(printf '%s' "$RESP" | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')"
+          UA="together-optimized-ci (github.com/College-Debt-SMP/together-optimized)"
+          auth_curl() {
+            curl -sS -w "\n%{http_code}" \
+              -H "Authorization: ${MODRINTH_TOKEN}" \
+              -H "User-Agent: ${UA}" \
+              "$@"
+          }
+
+          RAW="$(auth_curl "https://api.modrinth.com/v2/project/together-optimized")"
+          HTTP="$(printf '%s' "$RAW" | tail -n1)"
+          BODY="$(printf '%s' "$RAW" | sed '$d')"
+          PROJECT_ID=""
+
+          if [ "$HTTP" = "200" ]; then
+            PROJECT_ID="$(printf '%s' "$BODY" | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')"
+          else
+            echo "Direct project lookup HTTP $HTTP; searching owned projects..."
+            USER_RAW="$(auth_curl "https://api.modrinth.com/v2/user")"
+            USER_HTTP="$(printf '%s' "$USER_RAW" | tail -n1)"
+            USER_BODY="$(printf '%s' "$USER_RAW" | sed '$d')"
+            if [ "$USER_HTTP" != "200" ]; then
+              echo "Failed to resolve Modrinth user (HTTP $USER_HTTP): $USER_BODY" >&2
+              exit 1
+            fi
+            USER_ID="$(printf '%s' "$USER_BODY" | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')"
+            echo "Authenticated Modrinth user id: $USER_ID"
+            PROJ_RAW="$(auth_curl "https://api.modrinth.com/v2/user/${USER_ID}/projects")"
+            PROJ_HTTP="$(printf '%s' "$PROJ_RAW" | tail -n1)"
+            PROJ_BODY="$(printf '%s' "$PROJ_RAW" | sed '$d')"
+            if [ "$PROJ_HTTP" != "200" ]; then
+              echo "Failed to list projects (HTTP $PROJ_HTTP): $PROJ_BODY" >&2
+              exit 1
+            fi
+            PROJECT_ID="$(printf '%s' "$PROJ_BODY" | python3 -c "
+import json, sys
+projects = json.load(sys.stdin)
+for p in projects:
+    if p.get('slug') == 'together-optimized' or p.get('title', '').lower() == 'together optimized':
+        print(p['id'])
+        break
+else:
+    print('Owned projects:', file=sys.stderr)
+    for p in projects:
+        print('  {id} slug={slug} title={title} type={ptype} status={status}'.format(
+            id=p.get('id'), slug=p.get('slug'), title=p.get('title'),
+            ptype=p.get('project_type'), status=p.get('status')), file=sys.stderr)
+    sys.exit(1)
+")"
+          fi
+
           if [ -z "$PROJECT_ID" ]; then
             echo "Could not resolve Modrinth project id for together-optimized" >&2
             exit 1
