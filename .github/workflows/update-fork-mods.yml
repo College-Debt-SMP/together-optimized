@@ -97,6 +97,7 @@ jobs:
         if: env.RELEASE == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
         run: |
           TAG="v${VERSION}"
           if gh release view "$TAG" >/dev/null 2>&1; then
@@ -112,6 +113,7 @@ jobs:
             cat /tmp/fork-mods.md
           } > "$NOTES_FILE"
           gh release create "$TAG" \
+            -R "$GH_REPO" \
             --title "Together Optimized ${VERSION}" \
             --notes-file "$NOTES_FILE" \
             dist/Together.Optimized-*.zip \
