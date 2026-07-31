@@ -1,7 +1,7 @@
 name: Update fork mods
 
-# Manually update fork-only Modrinth mods across retained Packwiz folders and
-# publish a new zip+mrpack GitHub Release when anything changes.
+# Manually update fork-only Modrinth mods across retained Packwiz folders.
+# Creates a GitHub Release only when at least one fork mod was updated.
 on:
   workflow_dispatch:
 
@@ -59,17 +59,25 @@ jobs:
       - name: Decide fork version
         id: version
         run: |
-          ARGS=(decide --start-version "${{ steps.start.outputs.version }}" --env-out /tmp/version.env)
-          if [ "${{ steps.forkmods.outputs.changed }}" = "true" ]; then
-            ARGS+=(--fork-mods-changed)
+          if [ "${{ steps.forkmods.outputs.changed }}" != "true" ]; then
+            VERSION="$(python3 "CLI tools/fork-version.py" print)"
+            {
+              echo "VERSION=${VERSION}"
+              echo "RELEASE=false"
+              echo "REASON=No fork-mod updates"
+            } > /tmp/version.env
+          else
+            python3 "CLI tools/fork-version.py" decide \
+              --start-version "${{ steps.start.outputs.version }}" \
+              --fork-mods-changed \
+              --env-out /tmp/version.env
           fi
-          python3 "CLI tools/fork-version.py" "${ARGS[@]}"
           cat /tmp/version.env >> "$GITHUB_ENV"
           cat /tmp/version.env
 
       - name: Stop if nothing to release
         if: env.RELEASE != 'true'
-        run: echo "No fork-mod updates to release."
+        run: echo "No fork-mod updates; skipping release."
 
       - name: Update changelog
         if: env.RELEASE == 'true'

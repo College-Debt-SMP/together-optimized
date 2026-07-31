@@ -104,7 +104,11 @@ jobs:
             ARGS+=(--fork-mods-changed)
           fi
           python3 "CLI tools/fork-version.py" "${ARGS[@]}"
-          python3 "CLI tools/ensure-initial-fork-suffix.py" --env-file /tmp/version.env
+          # Fork-only path (no upstream merge): never release unless a fork mod changed.
+          if [ "${{ steps.merge.outputs.synced }}" != "true" ] && [ "${{ steps.forkmods.outputs.changed }}" != "true" ]; then
+            sed -i 's/^RELEASE=.*/RELEASE=false/' /tmp/version.env
+            sed -i 's/^REASON=.*/REASON=No fork-mod updates (fork-only run)/' /tmp/version.env
+          fi
           cat /tmp/version.env >> "$GITHUB_ENV"
           cat /tmp/version.env
 
