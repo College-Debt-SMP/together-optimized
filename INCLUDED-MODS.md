@@ -59,6 +59,7 @@ Mods included in **Together Optimized** (Minecraft 26.2). The selected mods are 
 | Name | Author | Description |
 |---|---|---|
 | [e4mc](https://www.curseforge.com/minecraft/mc-mods/e4mc) | [skyegreen](https://www.curseforge.com/members/skyegreen) | Allows opening worlds to public access the same way you can open to LAN |
+| [LOD Server Support](https://modrinth.com/plugin/lod-server-support) | [bitvox](https://modrinth.com/user/bitvox) | Streams Voxy LOD terrain on multiplayer (needs LSS on server + client) |
 | [No Chat Reports](https://www.curseforge.com/minecraft/mc-mods/no-chat-reports) | [Aizistral](https://www.curseforge.com/members/aizistral) | Provides consistent chat status indicators and visual options |
 | [Simple Voice Chat](https://modrinth.com/plugin/simple-voice-chat) | [henkelmax](https://modrinth.com/user/henkelmax) | Adds proximity voice chat |
 | [Vivecraft](https://modrinth.com/mod/vivecraft) | [ferriarnus](https://modrinth.com/user/ferriarnus) | Adds VR support |

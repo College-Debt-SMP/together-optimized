@@ -19,4 +19,5 @@ _No fork-mod changes._
 - Rebranded documentation to Together Optimized (maintainer: CherryQuartzio)
 - Kept Packwiz metadata for Minecraft 26.2 only
 - Added Simple Voice Chat, Vivecraft, voxy, Nvidium, and Reflex AntiLag
+- Added LOD Server Support (Voxy multiplayer LOD streaming)
 - Added upstream sync workflow (fetch/merge only; never pushes to FO)

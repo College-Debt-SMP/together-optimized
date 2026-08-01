@@ -320,6 +320,11 @@ hash = "11f2c11b9913425037568109b9531ee42a98a27f73eeb104bd2042e6f507fe81"
 metafile = true
 
 [[files]]
+file = "mods/lod-server-support.pw.toml"
+hash = "3fbf18ea5deafd5d8a1ff3d2ef108e13393830841baa236ebd609fe441e6bafb"
+metafile = true
+
+[[files]]
 file = "mods/main_menu_credits.pw.toml"
 hash = "2e691e9b0335390aae11158f2ce26495e756d5607f847a89ddc0f123e12f717c"
 metafile = true
