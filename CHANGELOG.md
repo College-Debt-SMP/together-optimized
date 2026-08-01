@@ -2,6 +2,16 @@
 
 Fork-specific notes for **Together Optimized** (College Debt SMP). Upstream Fabulously Optimized release notes live in the [upstream CHANGELOG](https://github.com/Fabulously-Optimized/fabulously-optimized/blob/main/CHANGELOG.md).
 
+## 14.0.0-beta.3.2 (2026-07-31)
+
+Fork mods updated
+
+### Fork mod status
+
+#### Minecraft 26.2
+Added:
+- `lod-server-support` → v0.8.2+fabric+mc26.2
+
 ## 14.0.0-beta.3.1 (2026-07-31)
 
 Applied initial fork suffix 14.0.0-beta.3.1
