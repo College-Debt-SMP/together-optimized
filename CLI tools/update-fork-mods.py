@@ -12,7 +12,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import subprocess
 import sys
 import urllib.error
@@ -100,14 +99,41 @@ def run_packwiz(pack_dir: Path, args: list[str], *, yes: bool = True) -> None:
     cmd = ["packwiz", *args]
     if yes:
         cmd.append("-y")
-    subprocess.run(cmd, cwd=pack_dir, check=True)
+    result = subprocess.run(
+        cmd,
+        cwd=pack_dir,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if result.stdout:
+        print(result.stdout, end="" if result.stdout.endswith("\n") else "\n", file=sys.stderr)
+    if result.stderr:
+        print(result.stderr, end="" if result.stderr.endswith("\n") else "\n", file=sys.stderr)
+    if result.returncode != 0:
+        raise subprocess.CalledProcessError(
+            result.returncode,
+            cmd,
+            output=result.stdout,
+            stderr=result.stderr,
+        )
 
 
-def slug_to_packwiz_name(slug: str, meta_path: Path | None) -> str:
+def packwiz_id(slug: str, meta_path: Path | None) -> str:
+    """Packwiz looks up mods by .pw.toml stem, not the display-name field."""
     if meta_path is not None:
-        data = tomllib.loads(meta_path.read_text(encoding="utf-8"))
-        return str(data.get("name") or meta_path.stem)
+        return meta_path.stem
     return slug
+
+
+def readd_mod(pack_dir: Path, slug: str, stem: str, meta_path: Path | None) -> None:
+    try:
+        run_packwiz(pack_dir, ["remove", stem])
+    except subprocess.CalledProcessError:
+        if meta_path is not None and meta_path.is_file():
+            meta_path.unlink()
+            print(f"Removed leftover metadata {meta_path.name}", file=sys.stderr)
+    run_packwiz(pack_dir, ["modrinth", "add", slug])
 
 
 def reconcile_folder(pack_dir: Path, slugs: list[str]) -> dict:
@@ -119,6 +145,10 @@ def reconcile_folder(pack_dir: Path, slugs: list[str]) -> dict:
     added: list[dict] = []
     missing: list[str] = []
     unchanged: list[str] = []
+    errors: list[dict] = []
+
+    # Index fork .pw.toml files that an upstream merge may have dropped from index.toml.
+    run_packwiz(pack_dir, ["refresh"])
 
     for slug in slugs:
         latest = latest_fabric_version(slug, mc_version)
@@ -130,9 +160,15 @@ def reconcile_folder(pack_dir: Path, slugs: list[str]) -> dict:
         version_id = latest["id"]
         version_number = latest.get("version_number", version_id)
         meta = existing_modrinth_meta(mods_dir, project_id)
+        stem = packwiz_id(slug, meta)
 
         if meta is None:
-            run_packwiz(pack_dir, ["modrinth", "add", slug])
+            try:
+                run_packwiz(pack_dir, ["modrinth", "add", slug])
+            except subprocess.CalledProcessError as exc:
+                errors.append({"slug": slug, "error": str(exc)})
+                print(f"Failed to add {slug}: {exc}", file=sys.stderr)
+                continue
             changed = True
             added.append({"slug": slug, "version": version_number, "version_id": version_id})
             continue
@@ -142,13 +178,15 @@ def reconcile_folder(pack_dir: Path, slugs: list[str]) -> dict:
             unchanged.append(slug)
             continue
 
-        name = slug_to_packwiz_name(slug, meta)
-        # Prefer update by metadata name; fall back to re-add via slug
         try:
-            run_packwiz(pack_dir, ["update", name])
+            run_packwiz(pack_dir, ["update", stem])
         except subprocess.CalledProcessError:
-            run_packwiz(pack_dir, ["remove", name])
-            run_packwiz(pack_dir, ["modrinth", "add", slug])
+            try:
+                readd_mod(pack_dir, slug, stem, meta)
+            except subprocess.CalledProcessError as exc:
+                errors.append({"slug": slug, "error": str(exc)})
+                print(f"Failed to update {slug}: {exc}", file=sys.stderr)
+                continue
         changed = True
         updated.append(
             {
@@ -169,6 +207,7 @@ def reconcile_folder(pack_dir: Path, slugs: list[str]) -> dict:
         "updated": updated,
         "missing": missing,
         "unchanged": unchanged,
+        "errors": errors,
     }
 
 
@@ -192,10 +231,19 @@ def markdown_report(results: list[dict]) -> str:
             lines.append("Temporarily missing (no Fabric build for this MC version yet):")
             for slug in result["missing"]:
                 lines.append(f"- `{slug}`")
-        if not result["added"] and not result["updated"] and not result["missing"]:
+        if result.get("errors"):
+            lines.append("Failed to add or update:")
+            for item in result["errors"]:
+                lines.append(f"- `{item['slug']}`: {item['error']}")
+        if (
+            not result["added"]
+            and not result["updated"]
+            and not result["missing"]
+            and not result.get("errors")
+        ):
             lines.append("- All fork mods present and up to date.")
         lines.append("")
-    if not any_change and all(not r["missing"] for r in results):
+    if not any_change and all(not r["missing"] and not r.get("errors") for r in results):
         lines.append("_No fork-mod changes._")
         lines.append("")
     return "\n".join(lines)
