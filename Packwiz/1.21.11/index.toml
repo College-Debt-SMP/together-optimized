@@ -22,7 +22,7 @@ hash = "24a72173ce51305204c9fad15c44c12d4d0950ab73300aeec26cbd5d12a50e1c"
 
 [[files]]
 file = "config/crash_assistant/crash_assistant_localization_overrides/et_ee.json"
-hash = "3fb9760b89236474348ecd0d5e62f24ccc1d3075834dd0eacb9a5375d8ad22e5"
+hash = "98794189f86253221d0506c74e1b9f1d3764a56da5323eea24e6192f452d7ac9"
 
 [[files]]
 file = "config/crash_assistant/crash_assistant_localization_overrides/fr_fr.json"
@@ -38,7 +38,7 @@ hash = "12d6de74be3cf88df4aff6fe8343a16b134808a71d62dd7460e50549cd5b97c5"
 
 [[files]]
 file = "config/crash_assistant/crash_assistant_localization_overrides/ms_my.json"
-hash = "cec55d3b1dc391160e8ecbcf4ad1c7f4122c5940604423c8ec7bc9aa8b46bf81"
+hash = "9ffdfae31402e116a79e7d42ac175d81be51367b443e5354f19653df4394e829"
 
 [[files]]
 file = "config/crash_assistant/crash_assistant_localization_overrides/pl_pl.json"
@@ -66,7 +66,7 @@ hash = "2b65c4f0048fd606d8938dc605e1ab608cf188db006474a2e767e6a9d66cda6f"
 
 [[files]]
 file = "config/crash_assistant/crash_assistant_localization_overrides/zlm_arab.json"
-hash = "82c55057dfedb11cc0e386e74c7c94d166b4c42e63159a0e60b4640896aa763d"
+hash = "b17d4f474a3b6c41320143b91aa193dbc1cd778a59aa1d4bd9e09ba41716c071"
 
 [[files]]
 file = "config/crash_assistant/scripts/log_analysis/blame-mods.jexl"
@@ -89,92 +89,24 @@ file = "config/modmenu.json"
 hash = "918643c25eb8f410036cd150c8e2bcd02423212c6e935da93ded230eac4a40a3"
 
 [[files]]
-file = "config/modpack_defaults/config/BBEConfig.json"
-hash = "e5f2ee57e9f9c0bd81af26c1918ceee988b3d726014c411f439406dc0fe60ef1"
-
-[[files]]
-file = "config/modpack_defaults/config/NoChatReports/NCR-Client.json"
-hash = "616e09c8ff849f4a9a07165a0a3513f468469237377546b64135591fca8a0592"
-
-[[files]]
-file = "config/modpack_defaults/config/NoChatReports/NCR-Common.json"
-hash = "c335cb5e65abce1bfc063eaddcff3eca759636e32ba7e4993ea249a31ab18816"
-
-[[files]]
-file = "config/modpack_defaults/config/PaginatedAdvancements.json5"
-hash = "3a1c71d2011cac176e00697237148ee882393b19394374862f8025f129d4c5a2"
-
-[[files]]
-file = "config/modpack_defaults/config/bettergrass.json"
-hash = "8aaf74864043e08741cc3c60f3ffe0d9aaf1fe757f111bb41064fb580d25bdf1"
-
-[[files]]
-file = "config/modpack_defaults/config/cape-provider/config.json"
-hash = "39320478bc85b1ea42d8c8f7d2381ee7523042f7703f3009e3e252c5874ae26f"
-
-[[files]]
-file = "config/modpack_defaults/config/citresewn.json"
-hash = "057e9e53790394db8b700616de3c235b0af3dc12fe7731a66ad20026acb9d991"
-
-[[files]]
 file = "config/modpack_defaults/config/crash_assistant/config.toml"
 hash = "259996eba4dcc6a2e56d5c9ef6169b2f1fb148345ad094a07ee850ee3c7aae77"
-
-[[files]]
-file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/be_by.json"
-hash = "db87c9322336f3ef307fee2ba2773bb4cda4fc91177efc83748463e5292870c3"
 
 [[files]]
 file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/en_us.json"
 hash = "d543c50f5bc64d8ac91edad8f13091e0c0891a27951a5051f866f917f1f290ef"
 
 [[files]]
-file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/es_es.json"
-hash = "24a72173ce51305204c9fad15c44c12d4d0950ab73300aeec26cbd5d12a50e1c"
-
-[[files]]
-file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/es_ve.json"
-hash = "24a72173ce51305204c9fad15c44c12d4d0950ab73300aeec26cbd5d12a50e1c"
-
-[[files]]
 file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/et_ee.json"
 hash = "3fb9760b89236474348ecd0d5e62f24ccc1d3075834dd0eacb9a5375d8ad22e5"
-
-[[files]]
-file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/fr_fr.json"
-hash = "843e10d26a04448cc21dce3f7ae09aa94d5d7948d6274d44287026ef905d7eca"
-
-[[files]]
-file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/he_il.json"
-hash = "0fc0eade2cad05b7d11855a4868b2a85ebd1e78c3e081b6f2ee935405a997f8c"
-
-[[files]]
-file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/it_it.json"
-hash = "12d6de74be3cf88df4aff6fe8343a16b134808a71d62dd7460e50549cd5b97c5"
 
 [[files]]
 file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/ms_my.json"
 hash = "cec55d3b1dc391160e8ecbcf4ad1c7f4122c5940604423c8ec7bc9aa8b46bf81"
 
 [[files]]
-file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/pl_pl.json"
-hash = "b9a995e9dee5cd018e4d08906c7a6b79d5cc0d009b7d58ab02503bf0ebc690c0"
-
-[[files]]
-file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/ro_ro.json"
-hash = "f2f5dd32c2b0c905fd9dbee03dccfab71ddc4df9cda7c39b93672d3df30579e6"
-
-[[files]]
-file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/ru_ru.json"
-hash = "ecfa56a3a4807ba8aaf70d50740b6bf1d398c0f40726685d5c16567f8f63246f"
-
-[[files]]
 file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/vi_vn.json"
 hash = "e353870c54a5876db06d7d65f10424b528f0fb95d436c02683be5641c931bfc9"
-
-[[files]]
-file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/zh_cn.json"
-hash = "1565ef7d04cdca7e658838e761fe1a9bf32cbbbdb0e3fb780aaa9f0fcd4d2486"
 
 [[files]]
 file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/zh_tw.json"
@@ -189,44 +121,12 @@ file = "config/modpack_defaults/config/crash_assistant/scripts/log_analysis/blam
 hash = "8738e08b86ad4be337dbb09d90554437e9b8306f1b2e8fb98e87d847b3d85bdb"
 
 [[files]]
-file = "config/modpack_defaults/config/debugify.json"
-hash = "0f225ab8423940db883938663ef73097674164e1f41aefc79b0179df0893d554"
-
-[[files]]
-file = "config/modpack_defaults/config/dynamic_fps.json"
-hash = "f773c03c1cce5797e4d4698939ba8a06f421101a0403b8e018c3f3d86e752a45"
-
-[[files]]
-file = "config/modpack_defaults/config/entity_texture_features.json"
-hash = "6a3760d2b7828efc524976294cc6fd17f16bdda9d9827bd55f8fcd58ce724355"
-
-[[files]]
 file = "config/modpack_defaults/config/fabric_loader_dependencies.json"
 hash = "92a4808c901a57a1251f5a2c4a9583c3e55b0410e9ed7d0de43219750a8469a5"
 
 [[files]]
-file = "config/modpack_defaults/config/fabrishot.properties"
-hash = "f5ff731194f66727bfeb75a28a70104fc4687cbc84b69e60c94fe1b7d901f453"
-
-[[files]]
-file = "config/modpack_defaults/config/fastquit.toml"
-hash = "17225e085e6759210cec7e829e00c8c90f9c5d38714835cb5da9c98398842f7d"
-
-[[files]]
-file = "config/modpack_defaults/config/iris.properties"
-hash = "3f5878535aacbfea79ae6da2f9142963f5662af3141692f0ba945767c9096ce5"
-
-[[files]]
 file = "config/modpack_defaults/config/isxander-main-menu-credits.json"
 hash = "e774d98a247ed0eb2782742c6eef6d8215f71f1ea7f83eb032f94a474447de43"
-
-[[files]]
-file = "config/modpack_defaults/config/lambdynlights.toml"
-hash = "326ec0c840e65aedf5c6048ea6016d551be38cf23f692949e105a4a388ad8be7"
-
-[[files]]
-file = "config/modpack_defaults/config/midnightlib.json"
-hash = "57b848fb6d7c03b6124297de49b1e4cb169e74db042c74aecf79f035ae2f3980"
 
 [[files]]
 file = "config/modpack_defaults/config/modernfix-mixins.properties"
@@ -237,83 +137,16 @@ file = "config/modpack_defaults/config/modmenu.json"
 hash = "918643c25eb8f410036cd150c8e2bcd02423212c6e935da93ded230eac4a40a3"
 
 [[files]]
-file = "config/modpack_defaults/config/moreculling.toml"
-hash = "60eb0902eac918d39fb5eb7df66314f5748aef0259b4ad5bdeacd27dfff120ca"
-
-[[files]]
-file = "config/modpack_defaults/config/puzzle.json"
-hash = "4449fb9b3440c4367f861d0f8e75b879caf6c897cb47569f13929ca37d6c864d"
-
-[[files]]
 file = "config/modpack_defaults/config/reeses_sodium_options.json"
 hash = "6dbf38d3c870c6f03539f7ea8150833b41f89a6ca5b86bcd3ff0ef19d881fc83"
-
-[[files]]
-file = "config/modpack_defaults/config/rrls.toml"
-hash = "3630be880dc7f037238b7e6347201d4f716ffc7e16db0a1498ef2f775cf8f5be"
-
-[[files]]
-file = "config/modpack_defaults/config/sodium-extra-options.json"
-hash = "6c02a3834146f91beeb4baa7a25abdfbbe7a9879ed53399465c17f7f61924801"
-
-[[files]]
-file = "config/modpack_defaults/config/sodium-options.json"
-hash = "37aaf52aa7545527c7ade71ac77ad2fcf6019995bf58b6ea1fe0f52949919d18"
-
-[[files]]
-file = "config/modpack_defaults/config/sodium-shadowy-path-blocks-options.json"
-hash = "4773ede8076bdbcfb6b8ea3de058a56120aa7438ee6b25de297c10aa8f5ce393"
-
-[[files]]
-file = "config/modpack_defaults/debug-profile.json"
-hash = "902b29e5f2044fa0011ac76281c700b52d83f1b5db6b605b8f702c8a99a55a2b"
-
-[[files]]
-file = "config/modpack_defaults/options.txt"
-hash = "aa1c9ddc9e3e7ce376b57fa7f1037c666ebdfd8eb125ecc0dd3f39d7d81706b0"
 
 [[files]]
 file = "config/reeses_sodium_options.json"
 hash = "6dbf38d3c870c6f03539f7ea8150833b41f89a6ca5b86bcd3ff0ef19d881fc83"
 
 [[files]]
-file = "mods/animatica.pw.toml"
-hash = "78dde53c09d55cc6023d57f7a8720948f72fb8fa451cb6413e4486708e9bfdcb"
-metafile = true
-
-[[files]]
-file = "mods/betterblockentities.pw.toml"
-hash = "a300a2c5071703f83740905a008833d32383f3d9b72e875ed6aff1a96b5f309e"
-metafile = true
-
-[[files]]
 file = "mods/bettergrass.pw.toml"
 hash = "8d54883808ff12aa5ffc309cb9b8c938fd9bb4858e7cb73b6237f39dc969d3bb"
-metafile = true
-
-[[files]]
-file = "mods/bettermounthud.pw.toml"
-hash = "b2c1e1ce7672eaa72551a6a98dc6f85b13201220a6c14b733dfa5c0584f0f19d"
-metafile = true
-
-[[files]]
-file = "mods/cape-provider.pw.toml"
-hash = "c34dd7b6f677fc4a31f4a740f9fc86372252cd1154cb58b2a783e54c7f0d6d57"
-metafile = true
-
-[[files]]
-file = "mods/cloth-config.pw.toml"
-hash = "b4bba42a338f7d73be08bd82a31b7c22a74345fc26a13b797cfd3b7aea937566"
-metafile = true
-
-[[files]]
-file = "mods/config_manager.pw.toml"
-hash = "48eea561787fda4c303f60716c0266ab613e8d816642617515be3d04777189b2"
-metafile = true
-
-[[files]]
-file = "mods/continuity.pw.toml"
-hash = "3e08f5e14084922c7c54ac0a19403b3aefe1185bd3bd7ea6357914b5859acbf5"
 metafile = true
 
 [[files]]
@@ -327,33 +160,8 @@ hash = "eda102abc97d7a1e280af61971f9c961c24befcb61fdbd61be2e7e7870c67868"
 metafile = true
 
 [[files]]
-file = "mods/cubes-without-borders.pw.toml"
-hash = "f0cf2cab793be7f36122311d75f25f3700ac50f8d5532fc40053b9f59fd1b048"
-metafile = true
-
-[[files]]
-file = "mods/debugify.pw.toml"
-hash = "2f4334c909013c446b76c2de88ed149b890afc2daa8f9f32226a0579064bf790"
-metafile = true
-
-[[files]]
-file = "mods/dynamic_fps.pw.toml"
-hash = "34a8127619c52294bf05c85024572fabaefafa7b2dd0233884633f3ef60403cd"
-metafile = true
-
-[[files]]
 file = "mods/e4mc.pw.toml"
 hash = "e02621aeb8f1385bb43dbbc1b87f1b68d3c7f9cb371f7b5d148f754359f670f0"
-metafile = true
-
-[[files]]
-file = "mods/entity_model_features.pw.toml"
-hash = "80a9c54fdd8925cbb3f147f7ed1a94549afe11eae5786c3cbf1c450e903fe1bc"
-metafile = true
-
-[[files]]
-file = "mods/entity_texture_features.pw.toml"
-hash = "392fffb13016eefa681d1f7910f90cb949f7578cdd38e01c28ca9ee3daf67af9"
 metafile = true
 
 [[files]]
@@ -372,38 +180,8 @@ hash = "2a760e528bf27c3eb4ae7c06200d91ee9c2849295addaa2add05495c7dee9528"
 metafile = true
 
 [[files]]
-file = "mods/fabrishot.pw.toml"
-hash = "560907a4a094fff21b74d8969ac318d0f0f47496ffea17f165650bdc04a9bdf0"
-metafile = true
-
-[[files]]
-file = "mods/fastquit.pw.toml"
-hash = "2b55becf0e111fe8fbcb514285d132e026489955849344b2b6dba71841d94dcf"
-metafile = true
-
-[[files]]
-file = "mods/ferritecore.pw.toml"
-hash = "dcde4c542fe6496905f1f670b9a57179304d6002b16d51328a0dcd8406a09a62"
-metafile = true
-
-[[files]]
-file = "mods/forgeconfigapiport.pw.toml"
-hash = "b22f1d052eee2810fda73d850dd6f425a1214965e03a5a9dada421abfe74603b"
-metafile = true
-
-[[files]]
 file = "mods/immediatelyfast.pw.toml"
 hash = "aeec5e0711421dcc89ab48bcb9c0d839d9851dc8b9c57652b400ef95a88e46e8"
-metafile = true
-
-[[files]]
-file = "mods/iris.pw.toml"
-hash = "193e98122de9829de460e2764a51438155ee76b1da5881f9b4becd8ffb2cba86"
-metafile = true
-
-[[files]]
-file = "mods/isxander-main-menu-credits.pw.toml"
-hash = "e379dcd9dfc17994be22c8ebd94ddb3e61c5e8498ba9a4f3e79b4e07ae253b43"
 metafile = true
 
 [[files]]
@@ -412,23 +190,13 @@ hash = "35f1ca6e348e129b7fd2a304a20388373b4ca889b79d5c188171fb7486758c89"
 metafile = true
 
 [[files]]
-file = "mods/lambdynlights.pw.toml"
-hash = "f7678a94a6283ab12b77632deab53d806d54d9d96a301b3f9ad1694b434646de"
-metafile = true
-
-[[files]]
 file = "mods/languagereload.pw.toml"
 hash = "e44e84f6a7f5178aa9973ba157d895c3da1a557610f10e8872122d659f2ad86b"
 metafile = true
 
 [[files]]
-file = "mods/lithium.pw.toml"
-hash = "8eff56c89115a361d269befde6ab9a94a47a549bb536c594ae17747540696d73"
-metafile = true
-
-[[files]]
-file = "mods/mixintrace.pw.toml"
-hash = "6cd55df8041a48cb7f5f95ea4520f5ed59064e71ff9dab8b0e02bb922b68c9cb"
+file = "mods/lod-server-support.pw.toml"
+hash = "b6507ba3a2f5ee763091ec753bfe5c579fd8f2d877b0ba4d10340d36696287b6"
 metafile = true
 
 [[files]]
@@ -437,33 +205,8 @@ hash = "496f7d1bad22abbde478ccf9fde458732afbc93ab9e5765d85f2501e23ce8db5"
 metafile = true
 
 [[files]]
-file = "mods/modmenu.pw.toml"
-hash = "935005b2da3568303c03565ff79f856bc2bd771006a3e052efe026ad0c9be351"
-metafile = true
-
-[[files]]
-file = "mods/morechathistory.pw.toml"
-hash = "b5c0182a299378a60b002e50c84869c563a020ecb7d03a66b5bd2523be987537"
-metafile = true
-
-[[files]]
-file = "mods/moreculling.pw.toml"
-hash = "83e2a9c898fcb97e7b61f30d150eb907da036cd03845c025b604ed384896e0c3"
-metafile = true
-
-[[files]]
-file = "mods/nochatreports.pw.toml"
-hash = "cd25851cbdaad2dd1957a8086ce54aa4bd3c45be75e1ba49168a54fafbd87898"
-metafile = true
-
-[[files]]
-file = "mods/optigui.pw.toml"
-hash = "e93a3f8be503fd2c8d72439b3ce6800d5c92f9678eb8791457bf9d6ec4bf038d"
-metafile = true
-
-[[files]]
-file = "mods/paginatedadvancements.pw.toml"
-hash = "b991c6117c7f7ce3cf2d3ab59ef0868be0a23736e7e0386d664614e1f805d320"
+file = "mods/nvidium.pw.toml"
+hash = "2d8b19bbf6ff9949d94b02c8e1891d3abf8857a65461cfadc28a381c47b3681d"
 metafile = true
 
 [[files]]
@@ -472,18 +215,18 @@ hash = "05e841d10d59164d20cb3f7cad24707eb079f46afafbc59bff11d668ea700cc6"
 metafile = true
 
 [[files]]
-file = "mods/puzzle.pw.toml"
-hash = "97754a77c90736daa9e20f8400c399addcb1156cbfead9c7f0ebcc17e3d43762"
-metafile = true
-
-[[files]]
 file = "mods/reeses-sodium-options.pw.toml"
 hash = "e3fcf1e4e6ae1ac2354d39a2e94aedbe1ecdfaf9594848a32e1eaac1cea58ef1"
 metafile = true
 
 [[files]]
-file = "mods/rrls.pw.toml"
-hash = "69a9d6b97f3c640ca5363d701deadf14781231e71dde3d62acbeee6245201f48"
+file = "mods/reflex-antilag.pw.toml"
+hash = "17ba386493e0d461c2fbc1d2abe4d89bf5f735348809fe005964791c13674e0f"
+metafile = true
+
+[[files]]
+file = "mods/simple-voice-chat.pw.toml"
+hash = "6e8067b0cbe5bf8b6c62cf499746ac1f6bfc66466edf92a42218d7f892008004"
 metafile = true
 
 [[files]]
@@ -492,28 +235,18 @@ hash = "dcadc8cf9f800e021822a45ef2d4d3f4677db7bb80a7da2754ea6b63c9ab3796"
 metafile = true
 
 [[files]]
-file = "mods/sodium-extra.pw.toml"
-hash = "7c332150908820c5407bb0570ac3f655c43d7a57c0ddefbb5af7a2ca95f1f5e5"
-metafile = true
-
-[[files]]
 file = "mods/sodium.pw.toml"
-hash = "156731218e17a750c4e7caee86a22edf7d6e22196218bbe6fe83601679c51d72"
+hash = "6c8575610994168a7c23eef1022c5bc11e69f16ca297a9e0f67d830258fba21b"
 metafile = true
 
 [[files]]
-file = "mods/sspb.pw.toml"
-hash = "7877919cb895985be9f85aa6f1e7bf1ff24279e3888ccc62f79fbf8eabc6023a"
+file = "mods/vivecraft.pw.toml"
+hash = "802bda8954b9b3aad7145d58eccec59fa8b9bded981a35340d6209cdc52169d1"
 metafile = true
 
 [[files]]
-file = "mods/yet_another_config_lib_v3.pw.toml"
-hash = "941777ea339a9e6c10af302decfff1e5c590fa4c2f06ffb813fbaa22c674d970"
-metafile = true
-
-[[files]]
-file = "mods/zoomify.pw.toml"
-hash = "854dacb27acda6e35475b2818419038737de8e12c7de39de1676a641d6a9c487"
+file = "mods/voxy.pw.toml"
+hash = "1b15aa249e728fe7af88899bfa08ca4a7a629b0f440750138f74a9b36c607292"
 metafile = true
 
 [[files]]

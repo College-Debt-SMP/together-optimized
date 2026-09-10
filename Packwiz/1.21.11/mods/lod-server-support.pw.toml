@@ -1,0 +1,13 @@
+name = "LOD Server Support"
+filename = "lod-server-support-fabric-0.14.0+1.21.11.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/lKiXKLvv/versions/vs1u6If9/lod-server-support-fabric-0.14.0%2B1.21.11.jar"
+hash-format = "sha512"
+hash = "46950bd8f51364d31106cae730e2a3a1a93b45754692e4db77a511380554a7433cd25690bfff30005f9b26766e0e3ee754df70664d96d938cfd57f92dcdd3068"
+
+[update]
+[update.modrinth]
+mod-id = "lKiXKLvv"
+version = "vs1u6If9"
