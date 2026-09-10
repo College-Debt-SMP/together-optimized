@@ -5,7 +5,8 @@ These scripts help maintain Together Optimized (originally adapted from Fabulous
 | `prune-old-packwiz.sh [N]` | Keep the newest `N` Packwiz MC folders (default 3) |
 | `fork-mods.txt` | Modrinth slugs updated independently of upstream FO |
 | `fork-version.py` | Fork version suffix helpers (`print`, `bump`, `ensure-upstream`, `decide`) |
-| `rebrand-pack.py` | Reset newest `pack.toml` name/author after upstream merges |
+| `rebrand-pack.py` | Reset newest pack branding (pack.toml, credits, loader deps, crash assistant) after upstream merges |
+| `resolve-upstream-merge.sh` | Auto-resolve predictable FO→fork merge conflicts (keep fork docs/deletions; take upstream elsewhere) |
 | `update-fork-mods.py` | Add/update fork mods on all retained Packwiz folders via Modrinth |
 | `resolve-modrinth-project.py` | Resolve Modrinth base62 project id for CI publish |
 | `update-changelog.py` | Prepend a release section to `CHANGELOG.md` |

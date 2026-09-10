@@ -60,7 +60,18 @@ jobs:
             echo "Already up to date with upstream/main."
             echo "synced=false" >> "$GITHUB_OUTPUT"
           else
+            set +e
             git merge --no-ff upstream/main -m "Merge upstream Fabulously Optimized into fork"
+            merge_status=$?
+            set -e
+            if [ "$merge_status" -ne 0 ]; then
+              echo "Merge reported conflicts; applying fork conflict policy..."
+              bash "CLI tools/resolve-upstream-merge.sh"
+              # Ensure merge commit is created even if the resolver staged everything.
+              if git rev-parse -q --verify MERGE_HEAD >/dev/null; then
+                git commit --no-edit -m "Merge upstream Fabulously Optimized into fork"
+              fi
+            fi
             echo "synced=true" >> "$GITHUB_OUTPUT"
           fi
 
