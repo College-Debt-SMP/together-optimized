@@ -13,7 +13,7 @@ Always use `gh … -R College-Debt-SMP/together-optimized` or set `GH_REPO: ${{ 
 
 ## Layout
 
-- **`Packwiz/<mc>/`** — source of truth (`pack.toml`, mods, configs). Newest MC folder is current (e.g. `26.2`). JARs are not in git.
+- **`Packwiz/<mc>/`** — source of truth (`pack.toml`, mods, configs). Keep every MC folder this fork already owns; newest is current (e.g. `26.2`). JARs are not in git.
 - **`CLI tools/`** — maintainer automation; see `CLI tools/README.md`.
 - **`Resource Packs/`** — bundled packs (e.g. Mod Menu Helper). Not the Mod Menu mod.
 - **`.github/workflows/`** — active CI only.
@@ -27,7 +27,7 @@ FO version `V` → fork `V.1` on first release for that base; later fork-only bu
 
 ## Fork-only mods
 
-Slugs in `CLI tools/fork-mods.txt` (updated independently of FO). Release policy:
+Slugs in `CLI tools/fork-mods.txt` (updated independently of FO). CI refreshes fork mods on the **2 newest** Packwiz folders only (`--latest 2`); older owned folders keep existing pins. Release policy:
 
 - **Upstream sync** (`sync-upstream.yml`): may release when FO base changes or initial `.1` is applied; also when fork mods change.
 - **Fork-only** (no upstream merge, or `update-fork-mods.yml`): create a GitHub Release **only** if at least one fork mod changed.
@@ -36,8 +36,8 @@ Slugs in `CLI tools/fork-mods.txt` (updated independently of FO). Release policy
 
 | Workflow | Trigger | Role |
 |----------|---------|------|
-| `sync-upstream.yml` | Weekly Mon 12:00 UTC + manual | Merge FO → prune top 3 Packwiz folders → rebrand → fork mods → version/changelog → push **origin** → Release (zip + mrpack) when releasing |
-| `update-fork-mods.yml` | Manual | Fork mods only; release only if mods changed |
+| `sync-upstream.yml` | Weekly Mon 12:00 UTC + manual | Merge FO → drop FO-only older Packwiz trees (keep owned + adopt newer MC) → rebrand → fork mods on 2 newest → version/changelog → push **origin** → Release (zip + mrpack) when releasing |
+| `update-fork-mods.yml` | Manual | Fork mods on 2 newest folders; release only if mods changed |
 | `publish-modrinth.yml` | Release published + manual | Upload release `.mrpack` to Modrinth (not CurseForge) |
 
 Jobs must stay gated with `github.repository_owner != 'Fabulously-Optimized'`.

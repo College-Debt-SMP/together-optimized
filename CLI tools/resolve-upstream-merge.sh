@@ -4,9 +4,10 @@
 # Policy:
 # - Fork-owned docs (CHANGELOG, INCLUDED-MODS): keep ours
 # - MultiMC FO instance (intentionally removed): keep deletion
-# - Packwiz modify/delete: take upstream so pruned folders can be restored intact;
-#   prune-old-packwiz.sh then keeps the top N folders
-# - Everything else: take upstream (theirs); rebrand/fork-mods run afterward
+# - Packwiz modify/delete: restore upstream only when this fork already owned that
+#   MC folder (HEAD had Packwiz/<ver>/); otherwise keep deletion (FO-only older tree)
+# - Everything else: take upstream (theirs); drop-unowned-packwiz + rebrand/fork-mods
+#   run afterward
 set -euo pipefail
 
 repo_root="$(cd "$(dirname "$0")/.." && pwd)"
@@ -44,6 +45,11 @@ stages_for() {
   git ls-files -u -- "$1" | awk '{print $3}' | sort -u | tr '\n' ' '
 }
 
+fork_owns_packwiz_version() {
+  local ver="$1"
+  git ls-tree -d --name-only HEAD "Packwiz/$ver" 2>/dev/null | grep -qx "Packwiz/$ver"
+}
+
 resolved=0
 for path in "${unmerged[@]}"; do
   stages="$(stages_for "$path")"
@@ -62,8 +68,19 @@ for path in "${unmerged[@]}"; do
         echo "delete (fork removed): $path"
         git rm -f -- "$path" >/dev/null
         ;;
+      Packwiz/*)
+        ver="${path#Packwiz/}"
+        ver="${ver%%/*}"
+        if fork_owns_packwiz_version "$ver"; then
+          echo "theirs (owned Packwiz/$ver): $path"
+          git checkout --theirs -- "$path"
+          git add -- "$path"
+        else
+          echo "delete (unowned Packwiz/$ver): $path"
+          git rm -f -- "$path" >/dev/null
+        fi
+        ;;
       *)
-        # Prefer upstream content (typical for previously pruned Packwiz folders).
         echo "theirs (restore upstream): $path"
         git checkout --theirs -- "$path"
         git add -- "$path"

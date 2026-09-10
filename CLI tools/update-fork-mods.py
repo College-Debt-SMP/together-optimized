@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
-"""Reconcile fork-only Modrinth mods across retained Packwiz MC folders.
+"""Reconcile fork-only Modrinth mods across Packwiz MC folders.
 
-For each Packwiz/<mc>/ folder:
+For each selected Packwiz/<mc>/ folder:
   - If a Fabric build exists for that Minecraft version, add or update the mod via packwiz
   - If not, record it as temporarily missing
+
+CI passes ``--latest 2`` so only the two newest MC folders are refreshed (older
+owned folders keep their existing fork-mod pins). Omitting ``--latest`` updates
+every Packwiz folder.
 
 Prints a JSON summary to stdout and writes a markdown fragment for CHANGELOG use.
 """
@@ -38,12 +42,20 @@ def load_slugs(path: Path) -> list[str]:
     return slugs
 
 
-def packwiz_dirs(repo_root: Path) -> list[Path]:
+def version_key(name: str) -> list:
+    return [int(x) if x.isdigit() else x for x in name.replace("-", ".").split(".")]
+
+
+def packwiz_dirs(repo_root: Path, *, latest: int | None = None) -> list[Path]:
     packwiz = repo_root / "Packwiz"
     dirs = sorted(
         (p for p in packwiz.iterdir() if p.is_dir()),
-        key=lambda p: [int(x) if x.isdigit() else x for x in p.name.replace("-", ".").split(".")],
+        key=lambda p: version_key(p.name),
     )
+    if latest is not None:
+        if latest < 1:
+            raise SystemExit("--latest must be >= 1")
+        dirs = dirs[-latest:]
     return dirs
 
 
@@ -272,6 +284,13 @@ def main() -> None:
         type=Path,
         help="Optional path to write the JSON summary",
     )
+    parser.add_argument(
+        "--latest",
+        type=int,
+        default=None,
+        metavar="N",
+        help="Only reconcile the newest N Packwiz MC folders (CI uses 2 to save runtime)",
+    )
     args = parser.parse_args()
 
     fork_mods_path = args.fork_mods or (args.repo_root / "CLI tools" / "fork-mods.txt")
@@ -280,7 +299,14 @@ def main() -> None:
         raise SystemExit(f"No slugs found in {fork_mods_path}")
 
     results = []
-    for pack_dir in packwiz_dirs(args.repo_root):
+    selected = packwiz_dirs(args.repo_root, latest=args.latest)
+    if args.latest is not None:
+        print(
+            f"Limiting fork-mod updates to newest {args.latest} folder(s): "
+            f"{', '.join(p.name for p in selected) or '(none)'}",
+            file=sys.stderr,
+        )
+    for pack_dir in selected:
         if not (pack_dir / "pack.toml").is_file():
             continue
         print(f"Reconciling fork mods in {pack_dir.name}...", file=sys.stderr)

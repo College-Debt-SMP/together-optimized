@@ -28,7 +28,7 @@ Upstream source code remains under the terms in [LICENSE.md](LICENSE.md). Togeth
 
 | Path | Purpose |
 |------|---------|
-| `Packwiz/26.2/` | Packwiz metadata for the current Minecraft version |
+| `Packwiz/<mc>/` | Packwiz metadata per Minecraft version this fork owns (newest is current) |
 | `CLI tools/` | Maintainer scripts (including upstream sync helpers) |
 | `CurseForge/`, `Modrinth/`, `MultiMC/` | Export / instance scaffolding inherited from upstream |
 | `.github/workflows/sync-upstream.yml` | Merges upstream FO into this fork (never pushes to FO) |
@@ -36,11 +36,13 @@ Upstream source code remains under the terms in [LICENSE.md](LICENSE.md). Togeth
 ## Syncing with upstream
 
 ```bash
+find Packwiz -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -V > /tmp/owned-packwiz.txt
 git fetch upstream
 git merge upstream/main
-bash "CLI tools/prune-old-packwiz.sh" 3
+# If conflicts: bash "CLI tools/resolve-upstream-merge.sh" && git commit
+bash "CLI tools/drop-unowned-packwiz.sh" /tmp/owned-packwiz.txt
 python3 "CLI tools/rebrand-pack.py"
-python3 "CLI tools/update-fork-mods.py"
+python3 "CLI tools/update-fork-mods.py" --latest 2
 ```
 
 Or run the **Sync upstream and update fork mods** / **Update fork mods** GitHub Actions on this fork. Push is disabled for the `upstream` remote so nothing is posted to the original FO repository. Releases publish CurseForge `.zip` and Modrinth `.mrpack` assets to GitHub Releases.

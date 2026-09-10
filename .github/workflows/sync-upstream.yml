@@ -1,8 +1,9 @@
 name: Sync upstream and update fork mods
 
-# Merges Fabulously-Optimized/fabulously-optimized into this fork, keeps the top 3
-# Packwiz MC folders, updates fork-only mods, and publishes zip+mrpack GitHub Releases.
-# Never pushes to the upstream repository.
+# Merges Fabulously-Optimized/fabulously-optimized into this fork, keeps Packwiz
+# MC folders this fork already owns (drops FO-only older trees; adopts newer MC
+# versions), updates fork-only mods on the 2 newest folders, and publishes
+# zip+mrpack GitHub Releases. Never pushes to the upstream repository.
 on:
   schedule:
     - cron: "0 12 * * 1"
@@ -45,6 +46,10 @@ jobs:
           echo "version=$START_VERSION" >> "$GITHUB_OUTPUT"
           echo "Start version: $START_VERSION"
 
+      - name: Record owned Packwiz folders
+        run: |
+          find Packwiz -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -V | tee /tmp/owned-packwiz.txt
+
       - name: Add upstream remote (fetch only)
         run: |
           git remote add upstream https://github.com/Fabulously-Optimized/fabulously-optimized.git || true
@@ -75,8 +80,9 @@ jobs:
             echo "synced=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Prune older Packwiz version folders (keep top 3)
-        run: bash "CLI tools/prune-old-packwiz.sh" 3
+      - name: Drop FO-only older Packwiz folders
+        if: steps.merge.outputs.synced == 'true'
+        run: bash "CLI tools/drop-unowned-packwiz.sh" /tmp/owned-packwiz.txt
 
       - name: Disable upstream workflows and community docs if reintroduced
         run: |
@@ -94,10 +100,11 @@ jobs:
       - name: Rebrand newest pack.toml
         run: python3 "CLI tools/rebrand-pack.py"
 
-      - name: Update fork mods on all retained folders
+      - name: Update fork mods on 2 newest folders
         id: forkmods
         run: |
           python3 "CLI tools/update-fork-mods.py" \
+            --latest 2 \
             --markdown-out /tmp/fork-mods.md \
             --json-out /tmp/fork-mods.json
           CHANGED="$(python3 -c 'import json; print(str(json.load(open("/tmp/fork-mods.json"))["changed"]).lower())')"

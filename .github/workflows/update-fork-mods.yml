@@ -1,6 +1,6 @@
 name: Update fork mods
 
-# Manually update fork-only Modrinth mods across retained Packwiz folders.
+# Manually update fork-only Modrinth mods on the 2 newest Packwiz MC folders.
 # Creates a GitHub Release only when at least one fork mod was updated.
 on:
   workflow_dispatch:
@@ -46,10 +46,11 @@ jobs:
           START_VERSION="$(python3 "CLI tools/fork-version.py" print)"
           echo "version=$START_VERSION" >> "$GITHUB_OUTPUT"
 
-      - name: Update fork mods on all retained folders
+      - name: Update fork mods on 2 newest folders
         id: forkmods
         run: |
           python3 "CLI tools/update-fork-mods.py" \
+            --latest 2 \
             --markdown-out /tmp/fork-mods.md \
             --json-out /tmp/fork-mods.json
           CHANGED="$(python3 -c 'import json; print(str(json.load(open("/tmp/fork-mods.json"))["changed"]).lower())')"

@@ -2,10 +2,11 @@
 
 [Packwiz](https://github.com/comp500/packwiz) manages this pack via TOML metadata under `Packwiz/<minecraft-version>/`.
 
-Together Optimized keeps **only the latest** Minecraft version folder. After syncing from [Fabulously Optimized](https://github.com/Fabulously-Optimized/fabulously-optimized), run:
+Together Optimized keeps every Minecraft version folder this fork already owns. After syncing from [Fabulously Optimized](https://github.com/Fabulously-Optimized/fabulously-optimized), drop FO-only older trees (folders we never kept) while adopting any newer MC version:
 
 ```bash
-bash "CLI tools/prune-old-packwiz.sh"
+# owned-dirs.txt is the pre-merge Packwiz/<mc> list (one name per line)
+bash "CLI tools/drop-unowned-packwiz.sh" owned-dirs.txt
 ```
 
 ## Requirements

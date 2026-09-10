@@ -2,22 +2,22 @@
 
 Private Fabric modpack fork for **College Debt SMP**, maintained by **CherryQuartzio**.
 
-Based on [Fabulously Optimized](https://github.com/Fabulously-Optimized/fabulously-optimized). This fork keeps Packwiz metadata for the latest Minecraft version only and adds extra mods for the server.
+Based on [Fabulously Optimized](https://github.com/Fabulously-Optimized/fabulously-optimized). This fork keeps Packwiz metadata for every Minecraft version it already owns (and adopts newer FO MC versions), and adds extra mods for the server.
 
 ## Layout
 
-* `Packwiz/26.2/` — current pack metadata, configs, and resource-pack references
-* `CLI tools/` — maintainer helpers (including `prune-old-packwiz.sh`)
+* `Packwiz/<mc>/` — pack metadata per owned Minecraft version (newest is current, e.g. `26.2`)
+* `CLI tools/` — maintainer helpers (including `drop-unowned-packwiz.sh`, merge conflict resolver)
 * `CurseForge/`, `Modrinth/`, `MultiMC/`, `MultiMC-Packwiz/` — export scaffolding inherited from upstream
-* `.github/workflows/sync-upstream.yml` — merge upstream FO, prune to top 3 MC folders, update fork mods, publish zip+mrpack GitHub Releases (never pushes to FO)
-* `.github/workflows/update-fork-mods.yml` — manual fork-mod-only update + release
+* `.github/workflows/sync-upstream.yml` — merge upstream FO, drop FO-only older Packwiz trees, update fork mods on 2 newest folders, publish zip+mrpack GitHub Releases (never pushes to FO)
+* `.github/workflows/update-fork-mods.yml` — manual fork-mod update on 2 newest folders + release
 * `.github/upstream-workflows/` — disabled upstream GitHub Actions (publish / Bitbucket sync)
 * `CLI tools/fork-mods.txt` — Modrinth slugs maintained independently of FO
 
 ## Notes
 
 * JAR files are not stored in git (see `.gitignore`) out of respect for mod authors. Use Packwiz, CurseForge, or Modrinth to download mods.
-* Older Minecraft Packwiz folders are intentionally removed; after an upstream sync, run `bash "CLI tools/prune-old-packwiz.sh"` (also done by the sync workflow).
+* Owned Packwiz MC folders are kept across syncs. FO-only older folders this fork never kept are dropped after merge (`CLI tools/drop-unowned-packwiz.sh`).
 
 ## Working with Packwiz
 
