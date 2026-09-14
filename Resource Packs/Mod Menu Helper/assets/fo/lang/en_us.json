@@ -1,6 +1,6 @@
 {
-    "fo.resourcePack.modmenuhelper": "§7Lists mods' main features and options in Mod Menu§r",
-    "modmenu.dropInfo.line1": "§9🛠§r/§8🛠§r - Together Optimized mod, list of available options",
+    "fo.resourcePack.modmenuhelper": "§7Shows modpack features in Mod Menu and options§r",
+    "modmenu.dropInfo.line1": "§9🛠§r/§8🛠§r - Fabulously Optimized mod, list of available options",
     "modmenu.dropInfo.line2": "§3§l📥§r - custom resource pack required to see effect",
     "modmenu.summaryTranslation.animatica": "OptiFine's Custom Animations\n§3§l📥§r§8🛠 (only advanced options)",
     "modmenu.nameTranslation.betterblockentities": "Better Block Entities",
@@ -13,7 +13,7 @@
     "modmenu.summaryTranslation.controlify": "Game controller support\n§9🛠§8 Vibration, sounds, ...",
     "modmenu.summaryTranslation.crash_assistant": "Helps you report crashes and fix known ones\n§8🛠 (only advanced options)",
     "modmenu.summaryTranslation.cwb": "Alt+Tab support for borderless fullscreen\n§9🛠§8 Mode, macOS resolution, pause on lost focus",
-    "sodium.options.fullscreen_mode.tooltip": "Exclusive fullscreen can improve latency, but may prevent some input methods from working and slow down switching out of the game. Borderless fullscreen can be configured in Cubes Without Borders options.",
+    "sodium.options.fullscreen_mode.tooltip" : "Exclusive fullscreen can improve latency, but may prevent some input methods from working and slow down switching out of the game. Borderless fullscreen can be configured in Cubes Without Borders options.",
     "sodium-extra.option.reduce_resolution_on_mac": "Reduce Resolution on macOS [toggle in Cubes Without Borders]",
     "sodium-extra.option.reduce_resolution_on_mac.tooltip": "Uses half resolution on Retina displays to improve performance on macOS.\nChanging this option requires a restart.\n\n§lThis is enabled by default, please keep this checkbox unchecked.§r\nTo use original resolution, go to Cubes Without Borders options and enable \"Use Scaled Framebuffer\".",
     "modmenu.summaryTranslation.debugify": "Fixes bugs, makes telemetry toggleable\n§9🛠§8 Toggle fixes, ...",
@@ -22,8 +22,8 @@
     "modmenu.summaryTranslation.entityculling": "Stops rendering mobs behind walls\n§9🛠§8 Toggle mod, disable for (block)entities, ...",
     "modmenu.summaryTranslation.entity_model_features": "OptiFine's Custom Entity Models\n§3§l📥§r§9🛠§8 Refresh speed, disable models, ...",
     "modmenu.summaryTranslation.entity_texture_features": "OptiFine's Random & Emissive Entities\n§3§l📥§r§9🛠§8 Random mobs, emissivity, eye blinking, ...",
-    "modmenu.summaryTranslation.fabrishot": "Take 4K screenshots with <keybind key.fabrishot.screenshot>\n§9🛠§8 Override <keybind key.screenshot>, resolution, keybind, ...",
-    "fo.pauseMenu.fabrishot": "Take 4K screenshots with F9",
+    "modmenu.summaryTranslation.renice-shot": "Take 4K screenshots with <keybind key.renice-shot.screenshot>\n§9🛠§8 Override <keybind key.screenshot>, resolution, keybind, ...",
+    "fo.pauseMenu.renice-shot": "Take 4K screenshots with F9",
     "modmenu.summaryTranslation.fastquit": "Quits from singleplayer instantly\n§9🛠§8 Toasts, indicator, ...",
     "modmenu.summaryTranslation.ferritecore": "Reduces RAM usage\n§8🛠 (only advanced options)",
     "modmenu.summaryTranslation.immediatelyfast": "Optimizes mobs, container blocks, GUI, HUD\n§8🛠 (only advanced options)",
@@ -57,5 +57,7 @@
     "menu.multiplayerOptions.lan": "LAN and Internet",
     "menu.multiplayerOptions.network.lan.tooltip": "Players on the same network can join via LAN; players anywhere in the world can join via an address shared by you.",
     "accessibility.onboarding.screen.narrator": "",
-    "accessibility.onboarding.screen.title": "Welcome to §7Together Optimized§r!\n\n§f🪟§r Connected Textures and Dynamic Lights - configure in §7Mods§r\n§a🏞§r Better Grass and fullscreen with Alt+Tab - enable in §7Video Settings§r\n§e✨§r Shaders and fancy resource packs - just §7add and enable§r\n§5🎮§r Game controllers supported - simply §7connect and use§r\n§3🛜§r Play with friends - press §7Open to Internet§r in singleplayer, or use voice chat\n§6🥽§r VR supported via Vivecraft when available\n\nPrivate pack for College Debt SMP."
+    "accessibility.onboarding.screen.title": "§6Welcome to §eFabulously Optimized§6!§r\n§f🪟§r Connected Textures, Dynamic Lights, Better Grass - see §7Mods§r\n§e✨§r Shaders and fancy resource packs - just §7add and enable§r\n§5🎮§r Game controllers supported - simply §7connect and use§r\n§3🛜§r Play with friends, anywhere - press §7Open to Internet§r in singleplayer",
+    "pack.dropInfo": "Extra pack features supported! See §fMods§r for info.",
+    "options.languageAccuracyWarning": "§fHelp translate the modpack: §7https://download.fo/translate§r"
 }
