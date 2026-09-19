@@ -478,10 +478,15 @@ def reconcile_folder(
     }
 
 
-def markdown_report(results: list[dict]) -> str:
+def markdown_report(results: list[dict], *, target_only: bool = True) -> str:
     lines = ["### Fork mod status", ""]
+    if target_only and results:
+        report_results = [results[-1]]
+    else:
+        report_results = results
+
     any_change = False
-    for result in results:
+    for result in report_results:
         mc = result["mc_version"]
         lines.append(f"#### Minecraft {mc}")
         if result["added"]:
@@ -529,7 +534,7 @@ def markdown_report(results: list[dict]) -> str:
             not r["missing"]
             and not r.get("incompatible")
             and not r.get("errors")
-            for r in results
+            for r in report_results
         )
     ):
         lines.append("_No fork-mod changes._")
@@ -572,6 +577,11 @@ def main() -> None:
         action="store_true",
         help="Do not remove already-installed fork mods that became incompatible with upstream",
     )
+    parser.add_argument(
+        "--all-mc-versions",
+        action="store_true",
+        help="Include all reconciled Minecraft versions in markdown report (default: release target MC only)",
+    )
     args = parser.parse_args()
 
     fork_mods_path = args.fork_mods or (args.repo_root / "CLI tools" / "fork-mods.txt")
@@ -599,10 +609,13 @@ def main() -> None:
             )
         )
 
+    target_result = results[-1] if results else None
+    target_changed = target_result["changed"] if target_result else False
     summary = {
-        "changed": any(r["changed"] for r in results),
+        "changed": target_changed,
+        "any_changed": any(r["changed"] for r in results),
         "results": results,
-        "markdown": markdown_report(results),
+        "markdown": markdown_report(results, target_only=not args.all_mc_versions),
     }
 
     if args.json_out:

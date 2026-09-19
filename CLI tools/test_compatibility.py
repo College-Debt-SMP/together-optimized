@@ -15,6 +15,7 @@ parse_version = update_fork_mods.parse_version
 compare_versions = update_fork_mods.compare_versions
 check_constraint = update_fork_mods.check_constraint
 check_mod_compatibility = update_fork_mods.check_mod_compatibility
+markdown_report = update_fork_mods.markdown_report
 
 
 class TestVersionParsingAndComparison(unittest.TestCase):
@@ -142,6 +143,50 @@ class TestCompatibilityChecker(unittest.TestCase):
         conflicts = check_mod_compatibility(candidate, self.installed)
         self.assertEqual(len(conflicts), 1)
         self.assertIn("requires Sodium version 2Yom1N68, but installed is xJZxADzI", conflicts[0])
+
+
+class TestMarkdownReport(unittest.TestCase):
+    def setUp(self):
+        self.results = [
+            {
+                "mc_version": "26.1.2",
+                "pack_dir": "/path/to/26.1.2",
+                "changed": True,
+                "added": [{"slug": "shulkerboxtooltip", "version": "5.4.0+26.1.1-fabric"}],
+                "updated": [],
+                "removed": [{"slug": "nvidium", "conflicts": ["incompatible"]}],
+                "incompatible": [],
+                "missing": [],
+                "unchanged": [],
+                "errors": [],
+            },
+            {
+                "mc_version": "26.2",
+                "pack_dir": "/path/to/26.2",
+                "changed": True,
+                "added": [{"slug": "shulkerboxtooltip", "version": "5.4.1+26.2-fabric"}],
+                "updated": [],
+                "removed": [],
+                "incompatible": [],
+                "missing": [],
+                "unchanged": [],
+                "errors": [],
+            },
+        ]
+
+    def test_markdown_report_target_only_by_default(self):
+        report = markdown_report(self.results)
+        self.assertIn("Minecraft 26.2", report)
+        self.assertIn("5.4.1+26.2-fabric", report)
+        self.assertNotIn("Minecraft 26.1.2", report)
+        self.assertNotIn("5.4.0+26.1.1-fabric", report)
+
+    def test_markdown_report_all_versions(self):
+        report = markdown_report(self.results, target_only=False)
+        self.assertIn("Minecraft 26.2", report)
+        self.assertIn("5.4.1+26.2-fabric", report)
+        self.assertIn("Minecraft 26.1.2", report)
+        self.assertIn("5.4.0+26.1.1-fabric", report)
 
 
 if __name__ == "__main__":

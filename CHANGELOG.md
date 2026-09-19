@@ -8,13 +8,6 @@ Fork mods updated
 
 ### Fork mod status
 
-#### Minecraft 26.1.2
-Added:
-- `shulkerboxtooltip` → 5.4.0+26.1.1-fabric
-Removed (incompatible with upstream):
-- `voxy`: requires Sodium (sodium) ['=0.0.0', '>=0.9.1- <=0.9.1'], but installed is 0.9.2-beta.1+mc26.1.2 (sodium-fabric-0.9.2-beta.1+mc26.1.2.jar)
-- `nvidium`: requires Sodium (sodium) ['0.9.1'], but installed is 0.9.2-beta.1+mc26.1.2 (sodium-fabric-0.9.2-beta.1+mc26.1.2.jar)
-
 #### Minecraft 26.2
 Added:
 - `shulkerboxtooltip` → 5.4.1+26.2-fabric
@@ -27,9 +20,6 @@ Upstream FO version base changed (14.0.0-beta.7 -> 14.1.0)
 
 ### Fork mod status
 
-#### Minecraft 26.1.2
-- All fork mods present and up to date.
-
 #### Minecraft 26.2
 - All fork mods present and up to date.
 
@@ -40,24 +30,6 @@ _No fork-mod changes._
 Upstream FO version base changed (14.0.0-beta.5 -> 14.0.0-beta.7)
 
 ### Fork mod status
-
-#### Minecraft 1.21.11
-Added:
-- `simple-voice-chat` → fabric-1.21.11-2.6.23
-- `vivecraft` → 1.21.11-1.3.15-fabric
-- `voxy` → 0.2.16-beta
-- `nvidium` → 0.4.3-beta13-1.21.11
-- `reflex-antilag` → 1.0.4+mc1.21.5
-- `lod-server-support` → v0.14.0+fabric+mc1.21.11
-
-#### Minecraft 26.1.2
-Added:
-- `simple-voice-chat` → fabric-2.6.23+26.1.2
-- `vivecraft` → 26.1.2-1.3.15-fabric
-- `voxy` → 0.2.18-beta
-- `nvidium` → 0.4.4-beta5-26.1
-- `reflex-antilag` → 1.0.4+mc26.1.2
-- `lod-server-support` → v0.14.0+fabric+mc26.1
 
 #### Minecraft 26.2
 Updated:
