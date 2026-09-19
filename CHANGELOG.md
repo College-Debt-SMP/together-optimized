@@ -2,6 +2,25 @@
 
 Fork-specific notes for **Together Optimized** (College Debt SMP). Upstream Fabulously Optimized release notes live in the [upstream CHANGELOG](https://github.com/Fabulously-Optimized/fabulously-optimized/blob/main/CHANGELOG.md).
 
+## 14.1.0.2 (2026-09-19)
+
+Fork mods updated
+
+### Fork mod status
+
+#### Minecraft 26.1.2
+Added:
+- `shulkerboxtooltip` → 5.4.0+26.1.1-fabric
+Removed (incompatible with upstream):
+- `voxy`: requires Sodium (sodium) ['=0.0.0', '>=0.9.1- <=0.9.1'], but installed is 0.9.2-beta.1+mc26.1.2 (sodium-fabric-0.9.2-beta.1+mc26.1.2.jar)
+- `nvidium`: requires Sodium (sodium) ['0.9.1'], but installed is 0.9.2-beta.1+mc26.1.2 (sodium-fabric-0.9.2-beta.1+mc26.1.2.jar)
+
+#### Minecraft 26.2
+Added:
+- `shulkerboxtooltip` → 5.4.1+26.2-fabric
+Removed (incompatible with upstream):
+- `nvidium`: requires Sodium (sodium) ['0.9.1'], but installed is 0.9.2+mc26.2 (sodium-fabric-0.9.2+mc26.2.jar)
+
 ## 14.1.0.1 (2026-09-14)
 
 Upstream FO version base changed (14.0.0-beta.7 -> 14.1.0)

@@ -149,11 +149,6 @@ hash = "b493c55a1dad6a1c01b4be621b22596b23703583b5dc969899683904c5359a18"
 metafile = true
 
 [[files]]
-file = "mods/nvidium.pw.toml"
-hash = "399d41be0d19528a395f3235755c718b594e8acf0865b3848928f8f2f3cc1252"
-metafile = true
-
-[[files]]
 file = "mods/polytone.pw.toml"
 hash = "c37a3b45369016763ef869c0e4d577f9deb9edfdc2ed81e7731b3c154c264d8b"
 metafile = true
@@ -161,6 +156,11 @@ metafile = true
 [[files]]
 file = "mods/reflex-antilag.pw.toml"
 hash = "493f1c09306b836db5f95351a700dffeb960fd1af42d0038989f30b400917d94"
+metafile = true
+
+[[files]]
+file = "mods/shulkerboxtooltip.pw.toml"
+hash = "2aea2968c0302317b824a4f3c6d6863aba3da5aa275a4b098c0abe0fff5d8493"
 metafile = true
 
 [[files]]
@@ -181,11 +181,6 @@ metafile = true
 [[files]]
 file = "mods/vivecraft.pw.toml"
 hash = "33e35d6882c7e87ed48a99ab9e65cb4b0c42ccc268c98e2ce4a62a58c3945a14"
-metafile = true
-
-[[files]]
-file = "mods/voxy.pw.toml"
-hash = "a5f5e80be1db5192dbe02b728c02f459758e58423e4fcc33df51300352a3eef7"
 metafile = true
 
 [[files]]

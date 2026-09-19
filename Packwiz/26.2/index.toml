@@ -377,11 +377,6 @@ hash = "68f5930c1212376b4b26a295c91dd5eb5c1157af1f95a18a5f8c06c4da7125cb"
 metafile = true
 
 [[files]]
-file = "mods/nvidium.pw.toml"
-hash = "d1121051b6e6f9a94300d6aae2d321d5183444576a84d49385152576ceabc895"
-metafile = true
-
-[[files]]
 file = "mods/optigui.pw.toml"
 hash = "14295613bad47c511a2d86a07ed6779e73d66ba3c56419fa4f0e8ce25ab761bf"
 metafile = true
@@ -424,6 +419,11 @@ metafile = true
 [[files]]
 file = "mods/rrls.pw.toml"
 hash = "9b50c8790b9d595a7ba148711aff2862fd9c237c11ac8c1049f93c9be5b9eabb"
+metafile = true
+
+[[files]]
+file = "mods/shulkerboxtooltip.pw.toml"
+hash = "a3c98b17ea14147b41b2823b6246c03de59b6ef80f1b6e5b1d92adabd23a91ae"
 metafile = true
 
 [[files]]
