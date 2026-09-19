@@ -53,6 +53,7 @@ Mods included in **Together Optimized** (Minecraft 26.2). The selected mods are 
 | [Main Menu Credits](https://www.curseforge.com/minecraft/mc-mods/main-menu-credits) | [isXander](https://www.curseforge.com/members/xanderisdev) | Adds modpack's clickable version number in title screen's bottom corner |
 | [Mod Menu](https://www.curseforge.com/minecraft/mc-mods/modmenu) | [TerraformersMC](https://www.curseforge.com/members/TerraformersMC) | Adds a mod list with descriptions (keep bundled resource pack enabled for better experience!) |
 | [More Chat History](https://www.curseforge.com/minecraft/mc-mods/more-chat-history) | [JackFred2](https://www.curseforge.com/members/JackFred2) | Increases chat history limit |
+| [Shulker Box Tooltip](https://modrinth.com/mod/shulkerboxtooltip) | [MisterPeModder](https://modrinth.com/user/MisterPeModder) | View the contents of shulker boxes from your inventory |
 | [Zoomify](https://www.curseforge.com/minecraft/mc-mods/zoomify) | [isXander](https://www.curseforge.com/members/xanderisdev) | Adds a scrollable and customizable zoom feature |
 
 ## Multiplayer

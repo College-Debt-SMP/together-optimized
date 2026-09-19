@@ -6,3 +6,4 @@ voxy
 nvidium
 reflex-antilag
 lod-server-support
+shulkerboxtooltip
