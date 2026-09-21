@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "config/crash_assistant/config.toml"
-hash = "259996eba4dcc6a2e56d5c9ef6169b2f1fb148345ad094a07ee850ee3c7aae77"
+hash = "6928a52f197c48ea50972cbb3ae7c70730e24b762c91b89638e42f1d8746e5f3"
 
 [[files]]
 file = "config/crash_assistant/crash_assistant_localization_overrides/en_us.json"
@@ -34,11 +34,11 @@ hash = "8988fbcf8d9431afdf58337165854ff3f1248a34e59d07a5cb1a7ae9ce21ce05"
 
 [[files]]
 file = "config/fabric_loader_dependencies.json"
-hash = "99136ffa89df3b216ea2d3df5cbd6ef6a0a337fd517b59b5377c3d8024e6d3e3"
+hash = "a6e5cdfae13c9a06d7a85340187b357aab494d1e674cfa8288accd7c82ff1cae"
 
 [[files]]
 file = "config/isxander-main-menu-credits.json"
-hash = "9794e34f578221c9d6e82305a9009f934ae5dfe5323f9593c082d9467a45c6bc"
+hash = "be1dc5c925d1b3930e2ef7e1e19d014e05eae0c3c67addf2f3488283a2727313"
 
 [[files]]
 file = "config/modmenu.json"
@@ -70,7 +70,7 @@ hash = "bfaed4a90f4b3b2ddb8fce57a7c4d9d2011a154c7f6bd8f005e79dff8ead6230"
 
 [[files]]
 file = "config/modpack_defaults/config/crash_assistant/config.toml"
-hash = "259996eba4dcc6a2e56d5c9ef6169b2f1fb148345ad094a07ee850ee3c7aae77"
+hash = "6928a52f197c48ea50972cbb3ae7c70730e24b762c91b89638e42f1d8746e5f3"
 
 [[files]]
 file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/be_by.json"
@@ -158,7 +158,7 @@ hash = "6a3760d2b7828efc524976294cc6fd17f16bdda9d9827bd55f8fcd58ce724355"
 
 [[files]]
 file = "config/modpack_defaults/config/fabric_loader_dependencies.json"
-hash = "99136ffa89df3b216ea2d3df5cbd6ef6a0a337fd517b59b5377c3d8024e6d3e3"
+hash = "a6e5cdfae13c9a06d7a85340187b357aab494d1e674cfa8288accd7c82ff1cae"
 
 [[files]]
 file = "config/modpack_defaults/config/fastquit.toml"
@@ -170,7 +170,7 @@ hash = "3f5878535aacbfea79ae6da2f9142963f5662af3141692f0ba945767c9096ce5"
 
 [[files]]
 file = "config/modpack_defaults/config/isxander-main-menu-credits.json"
-hash = "9794e34f578221c9d6e82305a9009f934ae5dfe5323f9593c082d9467a45c6bc"
+hash = "be1dc5c925d1b3930e2ef7e1e19d014e05eae0c3c67addf2f3488283a2727313"
 
 [[files]]
 file = "config/modpack_defaults/config/lambdynlights.toml"
@@ -393,6 +393,16 @@ metafile = true
 [[files]]
 file = "mods/rrls.pw.toml"
 hash = "2474d9b8ba6b67c1a23fd4864f27405704373a80aac3e800b8d8553400692c80"
+metafile = true
+
+[[files]]
+file = "mods/shulkerboxtooltip.pw.toml"
+hash = "a60445c98a3a1412a6429357cb70302af6505165049f57f29b81b1489c4673b9"
+metafile = true
+
+[[files]]
+file = "mods/simple-voice-chat.pw.toml"
+hash = "538084be8eddcd5e682ab52c5d2a8d7ba956e1a25cd540389430c25d0eaa513d"
 metafile = true
 
 [[files]]
