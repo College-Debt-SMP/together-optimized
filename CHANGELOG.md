@@ -2,6 +2,21 @@
 
 Fork-specific notes for **Together Optimized** (College Debt SMP). Upstream Fabulously Optimized release notes live in the [upstream CHANGELOG](https://github.com/Fabulously-Optimized/fabulously-optimized/blob/main/CHANGELOG.md).
 
+## 15.0.0-alpha.4.1 (2026-09-28)
+
+Upstream FO version base changed (15.0.0-alpha.3 -> 15.0.0-alpha.4)
+
+### Fork mod status
+
+#### Minecraft 26.3
+Added:
+- `vivecraft` → 26.3-1.3.16-fabric
+- `nvidium` → 0.4.4-beta7-26.3
+Temporarily missing (no Fabric build for this MC version yet):
+- `voxy`
+- `reflex-antilag`
+- `lod-server-support`
+
 ## 15.0.0-alpha.3.1 (2026-09-21)
 
 Upstream FO version base changed (14.1.0 -> 15.0.0-alpha.3)

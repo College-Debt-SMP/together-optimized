@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "config/crash_assistant/config.toml"
-hash = "259996eba4dcc6a2e56d5c9ef6169b2f1fb148345ad094a07ee850ee3c7aae77"
+hash = "6928a52f197c48ea50972cbb3ae7c70730e24b762c91b89638e42f1d8746e5f3"
 
 [[files]]
 file = "config/crash_assistant/crash_assistant_localization_overrides/en_us.json"
@@ -18,11 +18,11 @@ hash = "e8e9aac924b0633326184cf20cfdcc44fa749f7ba410c816fae6893f4bcd5ace"
 
 [[files]]
 file = "config/fabric_loader_dependencies.json"
-hash = "72ec5c59af33bb4d8761406b6f340c82177ac47cdaaa9c329b051a556ca544fd"
+hash = "1fdb0e0c7485bcecedee8bad0245e70d81d3f85c5257d074bfaed57661721163"
 
 [[files]]
 file = "config/isxander-main-menu-credits.json"
-hash = "f2a7b8be516c4e9ef93aa56abfb489d776b60ce6471db6663ab2fcd3e02c95de"
+hash = "be1dc5c925d1b3930e2ef7e1e19d014e05eae0c3c67addf2f3488283a2727313"
 
 [[files]]
 file = "config/modpack_defaults/config/BBEConfig.json"
@@ -50,7 +50,7 @@ hash = "bfaed4a90f4b3b2ddb8fce57a7c4d9d2011a154c7f6bd8f005e79dff8ead6230"
 
 [[files]]
 file = "config/modpack_defaults/config/crash_assistant/config.toml"
-hash = "259996eba4dcc6a2e56d5c9ef6169b2f1fb148345ad094a07ee850ee3c7aae77"
+hash = "6928a52f197c48ea50972cbb3ae7c70730e24b762c91b89638e42f1d8746e5f3"
 
 [[files]]
 file = "config/modpack_defaults/config/crash_assistant/crash_assistant_localization_overrides/be_by.json"
@@ -142,7 +142,7 @@ hash = "6a3760d2b7828efc524976294cc6fd17f16bdda9d9827bd55f8fcd58ce724355"
 
 [[files]]
 file = "config/modpack_defaults/config/fabric_loader_dependencies.json"
-hash = "72ec5c59af33bb4d8761406b6f340c82177ac47cdaaa9c329b051a556ca544fd"
+hash = "1fdb0e0c7485bcecedee8bad0245e70d81d3f85c5257d074bfaed57661721163"
 
 [[files]]
 file = "config/modpack_defaults/config/fastquit.toml"
@@ -154,7 +154,7 @@ hash = "3f5878535aacbfea79ae6da2f9142963f5662af3141692f0ba945767c9096ce5"
 
 [[files]]
 file = "config/modpack_defaults/config/isxander-main-menu-credits.json"
-hash = "f2a7b8be516c4e9ef93aa56abfb489d776b60ce6471db6663ab2fcd3e02c95de"
+hash = "be1dc5c925d1b3930e2ef7e1e19d014e05eae0c3c67addf2f3488283a2727313"
 
 [[files]]
 file = "config/modpack_defaults/config/lambdynlights.toml"
@@ -365,6 +365,11 @@ hash = "5808a2b01300712db58e52009f46198a2c8cbb48893bc82d8a54c85e3c87d097"
 metafile = true
 
 [[files]]
+file = "mods/nvidium.pw.toml"
+hash = "a56f2d77bd25309bbdc032d95a4dadcc6be31238279a6120172198c5a9bdf2a0"
+metafile = true
+
+[[files]]
 file = "mods/optigui.pw.toml"
 hash = "aa88b40951918dd0546f3298472a8e76a24f3bd031188db6dbecd311d8f5ca83"
 metafile = true
@@ -390,6 +395,16 @@ hash = "2474d9b8ba6b67c1a23fd4864f27405704373a80aac3e800b8d8553400692c80"
 metafile = true
 
 [[files]]
+file = "mods/shulkerboxtooltip.pw.toml"
+hash = "a60445c98a3a1412a6429357cb70302af6505165049f57f29b81b1489c4673b9"
+metafile = true
+
+[[files]]
+file = "mods/simple-voice-chat.pw.toml"
+hash = "538084be8eddcd5e682ab52c5d2a8d7ba956e1a25cd540389430c25d0eaa513d"
+metafile = true
+
+[[files]]
 file = "mods/skyboxify.pw.toml"
 hash = "955a12cb02c676be247b669fbd12f6a4ea459400c16fa4e814e86e7bf60fe9af"
 metafile = true
@@ -407,6 +422,11 @@ metafile = true
 [[files]]
 file = "mods/sspb.pw.toml"
 hash = "172d8f5a3477d8b6d997e6266b778ca50a93a746dd92c809d66e526c4d027dcb"
+metafile = true
+
+[[files]]
+file = "mods/vivecraft.pw.toml"
+hash = "e7d547b7a62e08c9a9dea0a2c0768ec918b74a1c3ec4f9d3c5b3790efe974af8"
 metafile = true
 
 [[files]]
