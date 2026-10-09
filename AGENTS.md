@@ -13,7 +13,7 @@ Always use `gh … -R College-Debt-SMP/together-optimized` or set `GH_REPO: ${{ 
 
 ## Layout
 
-- **`Packwiz/<mc>/`** — source of truth (`pack.toml`, mods, configs). Keep every MC folder this fork already owns; newest is current (e.g. `26.2`). JARs are not in git.
+- **`Packwiz/<mc>/`** — source of truth (`pack.toml`, mods, configs). Keep every MC folder this fork already owns; newest is current (e.g. `26.3`). JARs are not in git.
 - **`CLI tools/`** — maintainer automation; see `CLI tools/README.md`.
 - **`Resource Packs/`** — bundled packs (e.g. Mod Menu Helper). Not the Mod Menu mod.
 - **`.github/workflows/`** — active CI only.

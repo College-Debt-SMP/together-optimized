@@ -257,6 +257,11 @@ hash = "88aa13d41089c63696b88a60353b21156b67416affbdb1f162478b4771b76ff2"
 metafile = true
 
 [[files]]
+file = "mods/distanthorizons.pw.toml"
+hash = "d902ede757ff3187dc7a5f27bb16a3162813c9bde8e41c605db6903d3c844a0d"
+metafile = true
+
+[[files]]
 file = "mods/dynamic_fps.pw.toml"
 hash = "b0b20b7b61f723236932043de6e779eb3914042f10d8620ef1afa0c4c099bc9e"
 metafile = true
@@ -337,11 +342,6 @@ hash = "be30ac77dc738871864fca3e2c185665f24c74ff68a8f481e3106b665cbe4e4d"
 metafile = true
 
 [[files]]
-file = "mods/lod-server-support.pw.toml"
-hash = "9ec615f4ce0a1797300e0a6480d0b74581991a983a40b77ffc0ae1e297cfe240"
-metafile = true
-
-[[files]]
 file = "mods/main_menu_credits.pw.toml"
 hash = "2e691e9b0335390aae11158f2ce26495e756d5607f847a89ddc0f123e12f717c"
 metafile = true
@@ -378,7 +378,7 @@ metafile = true
 
 [[files]]
 file = "mods/nvidium.pw.toml"
-hash = "a8f3b10a0f5be03ffdca1efc45bc5dad8283a951dad5256a05807a1f911119c1"
+hash = "2f086f27e3cb86347ae8e823bbf3cd33cd24b17d017a15b46aa8632822bcb822"
 metafile = true
 
 [[files]]
@@ -457,13 +457,13 @@ hash = "58f1b88d724a30d10359c9ac9febdef6dabbcfec39bcee4476c1e65b7ace807d"
 metafile = true
 
 [[files]]
-file = "mods/vivecraft.pw.toml"
-hash = "58cd41433448d7a9d2e54c374390602ddb2f1940588a2bbab271419d8b1491d1"
+file = "mods/vitrail-shaders.pw.toml"
+hash = "5de95ee9d6e93e2f43394526779bbeab693f05520a4383b4dc8acd6cb6849bc0"
 metafile = true
 
 [[files]]
-file = "mods/voxy.pw.toml"
-hash = "71d059b58ff61f935fb117777ddac39ee49d733500ff6ec9233121b7b3cbc9b0"
+file = "mods/vivecraft.pw.toml"
+hash = "edc4ebf1957363cd6c54eb9f3ab6f24010d609bc9c02c3398e63c8f22f0f11a2"
 metafile = true
 
 [[files]]
@@ -483,7 +483,7 @@ metafile = true
 
 [[files]]
 file = "resourcepacks/Mod Menu Helper.zip"
-hash = "f92dd2754a699eb8732cfc9ca02d95039c29c089e8ae3e5fc4bcd9d0f3176333"
+hash = "584b65f6be1eee6bbe07bcd07208823674aa7762048203c5b8bcd6bb3f048103"
 
 [[files]]
 file = "resourcepacks/Translations_for_Sodium.pw.toml"

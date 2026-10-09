@@ -34,6 +34,50 @@ except ImportError:  # pragma: no cover
 USER_AGENT = "together-optimized/1.0 (College-Debt-SMP; +https://github.com/College-Debt-SMP/together-optimized)"
 API = "https://api.modrinth.com/v2"
 
+OPTIONAL_FORK_MODS: dict[str, dict] = {
+    "nvidium": {
+        "optional": True,
+        "default": True,
+        "description": "Fast NVIDIA-only OpenGL rendering backend. Disable if using the experimental Vulkan renderer.",
+    },
+    "vivecraft": {
+        "optional": True,
+        "default": False,
+        "description": "VR support. Disable if not using VR or if using the experimental Vulkan renderer.",
+    },
+    "vitrail-shaders": {
+        "optional": True,
+        "default": False,
+        "description": "OptiFine/Iris-format shader pack support on Minecraft's native Vulkan renderer. Iris handles shaders on OpenGL.",
+    },
+}
+
+OBSOLETE_FORK_SLUGS: list[str] = ["voxy", "lod-server-support"]
+
+
+def apply_mod_options(meta_path: Path, slug: str) -> bool:
+    cfg = OPTIONAL_FORK_MODS.get(slug)
+    if not cfg or not meta_path.is_file():
+        return False
+    text = meta_path.read_text(encoding="utf-8")
+    opt_lines = [
+        "[option]",
+        f"optional = {'true' if cfg['optional'] else 'false'}",
+        f"default = {'true' if cfg['default'] else 'false'}",
+        f'description = "{cfg["description"]}"',
+    ]
+    opt_block = "\n".join(opt_lines)
+    if "[option]" in text:
+        new_text = re.sub(r'(?s)\[option\].*?(?=\n\[|\Z)', opt_block + "\n", text)
+    else:
+        new_text = text.rstrip() + "\n\n" + opt_block + "\n"
+    if new_text != text:
+        meta_path.write_text(new_text, encoding="utf-8")
+        print(f"Applied optional config to {meta_path.name} (default={cfg['default']})", file=sys.stderr)
+        return True
+    return False
+
+
 
 def load_slugs(path: Path) -> list[str]:
     slugs = []
@@ -138,10 +182,19 @@ def run_packwiz(pack_dir: Path, args: list[str], *, yes: bool = True) -> None:
         )
 
 
+def mod_file_stem(path: Path) -> str:
+    """Return the mod file stem without .pw.toml or .toml."""
+    name = path.name
+    for suffix in [".pw.toml", ".toml"]:
+        if name.endswith(suffix):
+            return name[:-len(suffix)]
+    return path.stem
+
+
 def packwiz_id(slug: str, meta_path: Path | None) -> str:
     """Packwiz looks up mods by .pw.toml stem, not the display-name field."""
     if meta_path is not None:
-        return meta_path.stem
+        return mod_file_stem(meta_path)
     return slug
 
 
@@ -230,6 +283,10 @@ def check_single_constraint(installed_ver: str, cond: str) -> bool:
     cond = cond.strip()
     if not cond or cond == "*":
         return True
+    if cond.endswith(".x") or cond.endswith(".*"):
+        prefix_parts, _ = parse_version(cond[:-2])
+        inst_parts, _ = parse_version(installed_ver)
+        return inst_parts[:len(prefix_parts)] == prefix_parts
     if cond.startswith(">="):
         target = cond[2:].strip().rstrip("-")
         return compare_versions(installed_ver, target) >= 0
@@ -275,9 +332,10 @@ def load_installed_mods(mods_dir: Path) -> dict[str, dict]:
         proj_id = update.get("mod-id")
         if not proj_id:
             continue
+        stem = mod_file_stem(path)
         installed[proj_id] = {
-            "name": data.get("name", path.stem),
-            "stem": path.stem,
+            "name": data.get("name", stem),
+            "stem": stem,
             "meta_path": path,
             "version_id": update.get("version"),
             "filename": data.get("filename", ""),
@@ -379,6 +437,26 @@ def reconcile_folder(
     run_packwiz(pack_dir, ["refresh"])
     installed = load_installed_mods(mods_dir)
 
+    # Remove obsolete fork mods if present
+    for obsolete in OBSOLETE_FORK_SLUGS:
+        for p in list(mods_dir.glob("*.pw.toml")):
+            stem = mod_file_stem(p)
+            if stem == obsolete or f'name = "{obsolete}"' in p.read_text(encoding="utf-8", errors="replace"):
+                print(
+                    f"Removing obsolete fork mod {obsolete} from {pack_dir.name}...",
+                    file=sys.stderr,
+                )
+                remove_mod(pack_dir, stem, p)
+                changed = True
+                removed.append(
+                    {
+                        "slug": obsolete,
+                        "version": "obsolete",
+                        "version_id": "",
+                        "conflicts": ["Replaced by Distant Horizons"],
+                    }
+                )
+
     for slug in slugs:
         latest = latest_fabric_version(slug, mc_version)
         if latest is None:
@@ -435,11 +513,17 @@ def reconcile_folder(
             changed = True
             added.append({"slug": slug, "version": version_number, "version_id": version_id})
             installed = load_installed_mods(mods_dir)
+            meta = existing_modrinth_meta(mods_dir, project_id)
+            if meta is not None and slug in OPTIONAL_FORK_MODS:
+                apply_mod_options(meta, slug)
             continue
 
         pinned = read_pinned_version(meta)
         if pinned == version_id:
             unchanged.append(slug)
+            if meta is not None and slug in OPTIONAL_FORK_MODS:
+                if apply_mod_options(meta, slug):
+                    changed = True
             continue
 
         try:
@@ -461,6 +545,9 @@ def reconcile_folder(
             }
         )
         installed = load_installed_mods(mods_dir)
+        meta = existing_modrinth_meta(mods_dir, project_id)
+        if meta is not None and slug in OPTIONAL_FORK_MODS:
+            apply_mod_options(meta, slug)
 
     run_packwiz(pack_dir, ["refresh"])
 
@@ -506,7 +593,7 @@ def markdown_report(results: list[dict], *, target_only: bool = True) -> str:
                 lines.append(f"- `{item['slug']}` → {item['version']}")
         if result.get("removed"):
             any_change = True
-            lines.append("Removed (incompatible with upstream):")
+            lines.append("Removed:")
             for item in result["removed"]:
                 reasons = "; ".join(item.get("conflicts", []))
                 lines.append(f"- `{item['slug']}`: {reasons}")

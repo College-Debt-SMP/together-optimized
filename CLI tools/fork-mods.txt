@@ -2,8 +2,8 @@
 # These are updated independently of upstream Fabulously Optimized.
 simple-voice-chat
 vivecraft
-voxy
 nvidium
 reflex-antilag
-lod-server-support
 shulkerboxtooltip
+distanthorizons
+vitrail-shaders

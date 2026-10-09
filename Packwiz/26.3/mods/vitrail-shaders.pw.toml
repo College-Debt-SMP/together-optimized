@@ -1,0 +1,18 @@
+name = "Vitrail Shaders"
+filename = "vitrail-0.12.0-beta+mc26.3.jar"
+side = "client"
+
+[download]
+url = "https://cdn.modrinth.com/data/oSIKhgz3/versions/Ul13RHiD/vitrail-0.12.0-beta%2Bmc26.3.jar"
+hash-format = "sha512"
+hash = "d62556fd467646194cffab824c112e6bd10b93f2924affba3e41477d3ff06dae1f7923fde8deb417832ee00c942c9096dd4e9a49f4413703e226cf757d943865"
+
+[update]
+[update.modrinth]
+mod-id = "oSIKhgz3"
+version = "Ul13RHiD"
+
+[option]
+optional = true
+default = false
+description = "OptiFine/Iris-format shader pack support on Minecraft's native Vulkan renderer. Iris handles shaders on OpenGL."

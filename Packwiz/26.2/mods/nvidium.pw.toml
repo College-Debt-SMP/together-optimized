@@ -11,3 +11,8 @@ hash = "f6a70717d3ceb9b8082a1f6e5857740755cf6e6e9b5054c98833f1659caa13e1e973422e
 [update.modrinth]
 mod-id = "SfMw2IZN"
 version = "2VTUVLLs"
+
+[option]
+optional = true
+default = true
+description = "Fast NVIDIA-only OpenGL rendering backend. Disable if using the experimental Vulkan renderer."

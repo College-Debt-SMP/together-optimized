@@ -52,6 +52,14 @@ class TestVersionParsingAndComparison(unittest.TestCase):
         self.assertTrue(check_constraint("0.9.9", "~0.9.1"))
         self.assertFalse(check_constraint("0.10.0", "~0.9.1"))
 
+    def test_check_constraint_wildcard(self):
+        self.assertTrue(check_constraint("0.9.2", "0.9.x"))
+        self.assertTrue(check_constraint("0.9.2+mc26.3", "0.9.x"))
+        self.assertTrue(check_constraint("0.9.0", "0.9.*"))
+        self.assertFalse(check_constraint("0.10.0", "0.9.x"))
+        self.assertTrue(check_constraint("1.21.1", "1.21.x"))
+        self.assertFalse(check_constraint("1.20.1", "1.21.*"))
+
     def test_check_constraint_disjunction(self):
         spec = ["=0.9.1", ">=0.9.2- <=0.9.2"]
         self.assertTrue(check_constraint("0.9.1", spec))

@@ -13,6 +13,8 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
+import zipfile
 from pathlib import Path
 
 try:
@@ -163,6 +165,29 @@ def rebrand_resource_pack_lang(repo_root: Path, name: str) -> None:
             print(f"Branded {lang_file}")
 
 
+def repack_mod_menu_helper(repo_root: Path, target_dirs: list[Path]) -> None:
+    src_dir = repo_root / "Resource Packs" / "Mod Menu Helper"
+    if not src_dir.is_dir():
+        return
+    for pack_dir in target_dirs:
+        rp_dir = pack_dir / "resourcepacks"
+        if not rp_dir.is_dir():
+            continue
+        dest_zip = rp_dir / "Mod Menu Helper.zip"
+        if not dest_zip.is_file() and not (pack_dir / "index.toml").is_file():
+            continue
+        with zipfile.ZipFile(dest_zip, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+            for file_path in sorted(src_dir.rglob("*")):
+                if file_path.is_file():
+                    arcname = file_path.relative_to(src_dir).as_posix()
+                    zf.write(file_path, arcname)
+        print(f"Repacked {dest_zip} from {src_dir}")
+        try:
+            subprocess.run(["packwiz", "refresh", "-y"], cwd=pack_dir, check=False, capture_output=True)
+        except Exception:
+            pass
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parent.parent)
@@ -215,6 +240,7 @@ def main() -> None:
             )
 
     rebrand_resource_pack_lang(args.repo_root, args.name)
+    repack_mod_menu_helper(args.repo_root, pack_dirs)
 
 
 if __name__ == "__main__":

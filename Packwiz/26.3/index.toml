@@ -256,6 +256,11 @@ hash = "987087289924e794b93b0532826e75ecf98b413d33e4289ffc5c088f28db5963"
 metafile = true
 
 [[files]]
+file = "mods/distanthorizons.pw.toml"
+hash = "8cfd619edd7190fdd7f048bc7815193699d0583857f988e421b8e7816167ad25"
+metafile = true
+
+[[files]]
 file = "mods/dynamic_fps.pw.toml"
 hash = "7a8cf1f0ef1f10eacf815019bda4367cff8a428245cb7e6ee9afd6f2a568d226"
 metafile = true
@@ -372,7 +377,7 @@ metafile = true
 
 [[files]]
 file = "mods/nvidium.pw.toml"
-hash = "a56f2d77bd25309bbdc032d95a4dadcc6be31238279a6120172198c5a9bdf2a0"
+hash = "cc59d4a20efda8be5bae6ae1eb0d61d0b37360a1e133cefd954a022602cab265"
 metafile = true
 
 [[files]]
@@ -441,8 +446,13 @@ hash = "172d8f5a3477d8b6d997e6266b778ca50a93a746dd92c809d66e526c4d027dcb"
 metafile = true
 
 [[files]]
+file = "mods/vitrail-shaders.pw.toml"
+hash = "05400bbf39fe7a54681b878a01a6891256911c89b5271b3642ef428e254ac032"
+metafile = true
+
+[[files]]
 file = "mods/vivecraft.pw.toml"
-hash = "0fb964c64c1380911b1643a23f335a9ce2ba042345d87b3b7e8f2af7aa1b527d"
+hash = "4a28e335b5f26c1bab02d68bc69e8acbd64a06ba1649c82ae385b2f932c5422d"
 metafile = true
 
 [[files]]
@@ -462,7 +472,7 @@ metafile = true
 
 [[files]]
 file = "resourcepacks/Mod Menu Helper.zip"
-hash = "5507d3986bd2657806d081c6324b6812b1bba2ce3849fb9d8baeef43776ec1ce"
+hash = "584b65f6be1eee6bbe07bcd07208823674aa7762048203c5b8bcd6bb3f048103"
 
 [[files]]
 file = "resourcepacks/Translations_for_Sodium.pw.toml"

@@ -11,3 +11,8 @@ hash = "8f63a60587fd95b21884d2d61ac6e76f18a3e9a510226edbc0e06e4f276b8f84196bde31
 [update.modrinth]
 mod-id = "wGoQDPN5"
 version = "VrqKDtZn"
+
+[option]
+optional = true
+default = false
+description = "VR support. Disable if not using VR or if using the experimental Vulkan renderer."

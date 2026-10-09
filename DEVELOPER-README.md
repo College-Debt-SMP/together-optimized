@@ -6,7 +6,7 @@ Based on [Fabulously Optimized](https://github.com/Fabulously-Optimized/fabulous
 
 ## Layout
 
-* `Packwiz/<mc>/` — pack metadata per owned Minecraft version (newest is current, e.g. `26.2`)
+* `Packwiz/<mc>/` — pack metadata per owned Minecraft version (newest is current, e.g. `26.3`)
 * `CLI tools/` — maintainer helpers (including `drop-unowned-packwiz.sh`, merge conflict resolver)
 * `CurseForge/`, `Modrinth/`, `MultiMC/`, `MultiMC-Packwiz/` — export scaffolding inherited from upstream
 * `.github/workflows/sync-upstream.yml` — merge upstream FO, drop FO-only older Packwiz trees, update fork mods on 2 newest folders, publish zip+mrpack GitHub Releases (never pushes to FO)
@@ -22,7 +22,7 @@ Based on [Fabulously Optimized](https://github.com/Fabulously-Optimized/fabulous
 ## Working with Packwiz
 
 ```bash
-cd Packwiz/26.2
+cd Packwiz/26.3
 packwiz list
 packwiz modrinth add -y <modrinth-url>
 packwiz refresh
@@ -31,7 +31,7 @@ packwiz refresh
 Export a Modrinth pack when needed:
 
 ```bash
-cd Packwiz/26.2
+cd Packwiz/26.3
 packwiz modrinth export
 ```
 

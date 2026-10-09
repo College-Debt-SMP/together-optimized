@@ -1,6 +1,6 @@
 # Included mods
 
-Mods included in **Together Optimized** (Minecraft 26.2). The selected mods are inspired, but not limited by the [list of OptiFine alternatives](https://lambdaurora.dev/optifine_alternatives). This pack is a fork of [Fabulously Optimized](https://github.com/Fabulously-Optimized/fabulously-optimized) with additional mods for College Debt SMP.
+Mods included in **Together Optimized** (Minecraft 26.3). The selected mods are inspired, but not limited by the [list of OptiFine alternatives](https://lambdaurora.dev/optifine_alternatives). This pack is a fork of [Fabulously Optimized](https://github.com/Fabulously-Optimized/fabulously-optimized) with additional mods for College Debt SMP.
 
 ## Smooth
 | Name | Author | Description |
@@ -14,11 +14,11 @@ Mods included in **Together Optimized** (Minecraft 26.2). The selected mods are 
 | [Language Reload](https://www.curseforge.com/minecraft/mc-mods/language-reload) | [Jerozgen](https://www.curseforge.com/members/Jerozgen) | Makes language switching instant, adds a searchbar |
 | [Lithium](https://www.curseforge.com/minecraft/mc-mods/lithium) | [CaffeineMC](https://www.curseforge.com/members/jellysquid3_) | Optimizes game physics and chunk loading |
 | [ModernFix](https://www.curseforge.com/minecraft/mc-mods/modernfix) | [embeddedt](https://www.curseforge.com/members/embeddedt/) | Improves performance, reduces RAM use, fixes bugs |
-| [Nvidium](https://modrinth.com/mod/nvidium) | [cortex](https://modrinth.com/user/cortex) | Fast NVIDIA-only rendering backend for Sodium |
-| [Reflex AntiLag](https://modrinth.com/mod/reflex-antilag) | [Tythee](https://modrinth.com/user/Tythee) | Implements NVIDIA Reflex to reduce input latency |
+| [Nvidium](https://modrinth.com/mod/nvidium) *(Optional)* | [cortex](https://modrinth.com/user/cortex) | Fast NVIDIA-only OpenGL rendering backend for Sodium. Enabled by default; disable if using the experimental Vulkan renderer |
+| [Reflex AntiLag](https://modrinth.com/mod/reflex-antilag) | [Tythee](https://modrinth.com/user/Tythee) | Implements NVIDIA Reflex to reduce input latency (OpenGL & Vulkan compatible) |
 | [Remove Reloading Screen](https://www.curseforge.com/minecraft/mc-mods/rrls) | [dimadencep](https://www.curseforge.com/members/dimadencep/) | Makes resource packs load in the background |
 | [Sodium](https://www.curseforge.com/minecraft/mc-mods/sodium) | [CaffeineMC](https://www.curseforge.com/members/jellysquid3_) | Optimizes general rendering to improve FPS, adds some graphics options |
-| [voxy](https://modrinth.com/mod/voxy) | [cortex](https://modrinth.com/user/cortex) | Level of Detail (LOD) rendering for distant terrain |
+| [Distant Horizons](https://modrinth.com/mod/distanthorizons) | [James-Codez](https://modrinth.com/user/James-Codez) | Level of Detail (LOD) distant terrain renderer (Vulkan and OpenGL compatible, with built-in multiplayer streaming) |
 
 ## Pretty
 | Name | Author | Description |
@@ -29,8 +29,8 @@ Mods included in **Together Optimized** (Minecraft 26.2). The selected mods are 
 | [Cape Provider](https://www.curseforge.com/minecraft/mc-mods/cape-provider) | [litetex](https://www.curseforge.com/members/litetex) | Adds OptiFine's and other mods' capes |
 | [Continuity](https://www.curseforge.com/minecraft/mc-mods/continuity) | [Pepper_Bell](https://www.curseforge.com/members/Pepper_Bell) | Adds OptiFine's connected textures support |
 | [Entity Model Features](https://www.curseforge.com/minecraft/mc-mods/entity-model-features) | [traben_0](https://www.curseforge.com/members/traben_0) | Adds OptiFine's custom entity models |
-| [Entity Texture Features](https://www.curseforge.com/minecraft/mc-mods/entity-texture-features-fabric) | [traben_0](https://www.curseforge.com/members/traben_0) | Adds OptiFine's random and emissive mobs support |
-| [Iris Shaders](https://www.curseforge.com/minecraft/mc-mods/irisshaders) | [coderbot](https://www.curseforge.com/members/coderbot) | Adds OptiFine's shaders support, [(recommended shader list is here)](https://github.com/IrisShaders/Iris/blob/trunk/docs/supportedshaders.md) |
+| [Iris Shaders](https://www.curseforge.com/minecraft/mc-mods/irisshaders) | [coderbot](https://www.curseforge.com/members/coderbot) | Adds OptiFine's shaders support on OpenGL, [(recommended shader list is here)](https://github.com/IrisShaders/Iris/blob/trunk/docs/supportedshaders.md) |
+| [Vitrail Shaders](https://modrinth.com/mod/vitrail-shaders) *(Optional)* | [avpbynf](https://modrinth.com/user/avpbynf) | OptiFine/Iris-format shader pack engine for Minecraft's native Vulkan renderer. Disabled by default; coexists with Iris |
 | [LambDynamicLights](https://www.curseforge.com/minecraft/mc-mods/lambdynamiclights) | [LambdAurora](https://www.curseforge.com/members/LambdAurora) | Adds OptiFine's "dynamic lights" - lights up areas by holding a light source, activating TNT or creeper |
 | [MoreCulling](https://www.curseforge.com/minecraft/mc-mods/moreculling) | [FX_PR0CESS](https://www.curseforge.com/members/fx_pr0cess) | Stops rendering hidden sides of certain blocks |
 | [OptiGUI](https://www.curseforge.com/minecraft/mc-mods/optigui) | [opekope2](https://www.curseforge.com/members/opekope2) | Adds OptiFine's custom GUI support |
@@ -60,10 +60,9 @@ Mods included in **Together Optimized** (Minecraft 26.2). The selected mods are 
 | Name | Author | Description |
 |---|---|---|
 | [e4mc](https://www.curseforge.com/minecraft/mc-mods/e4mc) | [skyegreen](https://www.curseforge.com/members/skyegreen) | Allows opening worlds to public access the same way you can open to LAN |
-| [LOD Server Support](https://modrinth.com/plugin/lod-server-support) | [bitvox](https://modrinth.com/user/bitvox) | Streams Voxy LOD terrain on multiplayer (needs LSS on server + client) |
 | [No Chat Reports](https://www.curseforge.com/minecraft/mc-mods/no-chat-reports) | [Aizistral](https://www.curseforge.com/members/aizistral) | Provides consistent chat status indicators and visual options |
 | [Simple Voice Chat](https://modrinth.com/plugin/simple-voice-chat) | [henkelmax](https://modrinth.com/user/henkelmax) | Adds proximity voice chat |
-| [Vivecraft](https://modrinth.com/mod/vivecraft) | [ferriarnus](https://modrinth.com/user/ferriarnus) | Adds VR support |
+| [Vivecraft](https://modrinth.com/mod/vivecraft) *(Optional)* | [ferriarnus](https://modrinth.com/user/ferriarnus) | Adds VR support. Disabled by default; disable if using the experimental Vulkan renderer |
 
 ## Libraries
 
