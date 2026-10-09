@@ -223,7 +223,7 @@ metafile = true
 
 [[files]]
 file = "mods/cloth-config.pw.toml"
-hash = "077ae4be4f2ad494da4b532b04746a5bc2ed1cf0183e6fef819c6f904c11de97"
+hash = "7fa9592b9948b8809018a4e7c3ca7da4d19fc5ef8c03021414cb22ae0253f083"
 metafile = true
 
 [[files]]
@@ -338,7 +338,7 @@ metafile = true
 
 [[files]]
 file = "mods/lod-server-support.pw.toml"
-hash = "60504b850fb4fbd63051ae20285b646f20e100476dbbf12c8df035dc0dc190cd"
+hash = "9ec615f4ce0a1797300e0a6480d0b74581991a983a40b77ffc0ae1e297cfe240"
 metafile = true
 
 [[files]]
@@ -413,7 +413,7 @@ metafile = true
 
 [[files]]
 file = "mods/reflex-antilag.pw.toml"
-hash = "e1b70e7ce26d44a44788f280cdf47fd0b02bd99681c8db46c72a3d1b16377be7"
+hash = "bd0d10d357a0acf8f22fc9a1cdda4635577f2cb852656859e72ba93a83bd1dcc"
 metafile = true
 
 [[files]]
