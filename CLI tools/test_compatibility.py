@@ -227,6 +227,25 @@ class TestMarkdownReport(unittest.TestCase):
         self.assertIn("Minecraft 26.1.2", report)
         self.assertIn("5.4.0+26.1.1-fabric", report)
 
+    def test_markdown_report_section_newlines(self):
+        results = [
+            {
+                "mc_version": "26.3",
+                "pack_dir": "/path/to/26.3",
+                "changed": True,
+                "added": [{"slug": "reflex-antilag", "version": "1.1.0+fabric-26.3"}],
+                "updated": [{"slug": "vivecraft", "version": "26.3-1.3.17-fabric"}],
+                "removed": [],
+                "incompatible": [],
+                "missing": ["voxy", "lod-server-support"],
+                "unchanged": [],
+                "errors": [],
+            }
+        ]
+        report = markdown_report(results, target_only=True)
+        self.assertIn("Added:\n- `reflex-antilag` → 1.1.0+fabric-26.3\n\nUpdated:\n", report)
+        self.assertIn("Updated:\n- `vivecraft` → 26.3-1.3.17-fabric\n\nTemporarily missing", report)
+
 
 if __name__ == "__main__":
     unittest.main()

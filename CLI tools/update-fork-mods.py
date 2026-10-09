@@ -581,45 +581,66 @@ def markdown_report(results: list[dict], *, target_only: bool = True) -> str:
     for result in report_results:
         mc = result["mc_version"]
         lines.append(f"#### Minecraft {mc}")
+        lines.append("")
+        sections: list[tuple[str, list[str]]] = []
         if result["added"]:
             any_change = True
-            lines.append("Added:")
-            for item in result["added"]:
-                lines.append(f"- `{item['slug']}` → {item['version']}")
+            sections.append(
+                (
+                    "Added:",
+                    [f"- `{item['slug']}` → {item['version']}" for item in result["added"]],
+                )
+            )
         if result["updated"]:
             any_change = True
-            lines.append("Updated:")
-            for item in result["updated"]:
-                lines.append(f"- `{item['slug']}` → {item['version']}")
+            sections.append(
+                (
+                    "Updated:",
+                    [f"- `{item['slug']}` → {item['version']}" for item in result["updated"]],
+                )
+            )
         if result.get("removed"):
             any_change = True
-            lines.append("Removed:")
+            removed_items = []
             for item in result["removed"]:
                 reasons = "; ".join(item.get("conflicts", []))
-                lines.append(f"- `{item['slug']}`: {reasons}")
+                removed_items.append(
+                    f"- `{item['slug']}`: {reasons}" if reasons else f"- `{item['slug']}`"
+                )
+            sections.append(("Removed:", removed_items))
         if result["missing"]:
-            lines.append("Temporarily missing (no Fabric build for this MC version yet):")
-            for slug in result["missing"]:
-                lines.append(f"- `{slug}`")
+            sections.append(
+                (
+                    "Temporarily missing (no Fabric build for this MC version yet):",
+                    [f"- `{slug}`" for slug in result["missing"]],
+                )
+            )
         if result.get("incompatible"):
-            lines.append("Temporarily skipped (incompatible with upstream):")
+            incomp_items = []
             for item in result["incompatible"]:
                 reasons = "; ".join(item.get("conflicts", []))
-                lines.append(f"- `{item['slug']}`: {reasons}")
+                incomp_items.append(
+                    f"- `{item['slug']}`: {reasons}" if reasons else f"- `{item['slug']}`"
+                )
+            sections.append(
+                ("Temporarily skipped (incompatible with upstream):", incomp_items)
+            )
         if result.get("errors"):
-            lines.append("Failed to add or update:")
-            for item in result["errors"]:
-                lines.append(f"- `{item['slug']}`: {item['error']}")
-        if (
-            not result["added"]
-            and not result["updated"]
-            and not result.get("removed")
-            and not result["missing"]
-            and not result.get("incompatible")
-            and not result.get("errors")
-        ):
+            sections.append(
+                (
+                    "Failed to add or update:",
+                    [f"- `{item['slug']}`: {item['error']}" for item in result["errors"]],
+                )
+            )
+
+        if sections:
+            for title, items in sections:
+                lines.append(title)
+                lines.extend(items)
+                lines.append("")
+        else:
             lines.append("- All fork mods present and up to date.")
-        lines.append("")
+            lines.append("")
     if (
         not any_change
         and all(

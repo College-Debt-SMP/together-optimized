@@ -9,10 +9,13 @@ Upstream FO version base changed (15.0.0-alpha.4 -> 15.0.0-alpha.5)
 ### Fork mod status
 
 #### Minecraft 26.3
+
 Added:
 - `reflex-antilag` → 1.1.0+fabric-26.3
+
 Updated:
 - `vivecraft` → 26.3-1.3.17-fabric
+
 Temporarily missing (no Fabric build for this MC version yet):
 - `voxy`
 - `lod-server-support`
@@ -24,9 +27,11 @@ Upstream FO version base changed (15.0.0-alpha.3 -> 15.0.0-alpha.4)
 ### Fork mod status
 
 #### Minecraft 26.3
+
 Added:
 - `vivecraft` → 26.3-1.3.16-fabric
 - `nvidium` → 0.4.4-beta7-26.3
+
 Temporarily missing (no Fabric build for this MC version yet):
 - `voxy`
 - `reflex-antilag`
@@ -39,9 +44,11 @@ Upstream FO version base changed (14.1.0 -> 15.0.0-alpha.3)
 ### Fork mod status
 
 #### Minecraft 26.3
+
 Added:
 - `simple-voice-chat` → fabric-2.6.24+26.3
 - `shulkerboxtooltip` → 5.4.2+26.3-fabric
+
 Temporarily missing (no Fabric build for this MC version yet):
 - `vivecraft`
 - `voxy`
@@ -56,8 +63,10 @@ Fork mods updated
 ### Fork mod status
 
 #### Minecraft 26.2
+
 Added:
 - `shulkerboxtooltip` → 5.4.1+26.2-fabric
+
 Removed (incompatible with upstream):
 - `nvidium`: requires Sodium (sodium) ['0.9.1'], but installed is 0.9.2+mc26.2 (sodium-fabric-0.9.2+mc26.2.jar)
 
@@ -79,6 +88,7 @@ Upstream FO version base changed (14.0.0-beta.5 -> 14.0.0-beta.7)
 ### Fork mod status
 
 #### Minecraft 26.2
+
 Updated:
 - `simple-voice-chat` → fabric-2.6.23+26.2
 - `voxy` → 0.2.19-beta
@@ -92,6 +102,7 @@ Upstream FO version base changed (14.0.0-beta.3 -> 14.0.0-beta.5)
 ### Fork mod status
 
 #### Minecraft 26.2
+
 - `simple-voice-chat` → voicechat-fabric-2.6.22+26.2.jar
 - `vivecraft` → vivecraft-26.2-1.3.15-fabric.jar
 - `voxy` → voxy-0.2.18-beta.jar
@@ -106,6 +117,7 @@ Fork mods updated
 ### Fork mod status
 
 #### Minecraft 26.2
+
 Added:
 - `lod-server-support` → v0.8.2+fabric+mc26.2
 
