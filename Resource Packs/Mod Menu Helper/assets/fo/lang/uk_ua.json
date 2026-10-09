@@ -1,6 +1,6 @@
 {
     "fo.resourcePack.modmenuhelper": "§7Показує функції модпака в Mod Menu і налаштуваннях§r",
-    "modmenu.dropInfo.line1": "§9🛠§r/§8🛠§r - мод Fabulously Optimized, доступні налаштування",
+    "modmenu.dropInfo.line1": "§9🛠§r/§8🛠§r - мод Together Optimized, доступні налаштування",
     "modmenu.dropInfo.line2": "§3§l📥§r - для отримання ефекту потрібен ресурспак",
     "modmenu.summaryTranslation.animatica": "Користувацькі анімації OptiFine\n§3§l📥§r§8🛠 (лише просунуті налаштування)",
     "modmenu.summaryTranslation.betterblockentities": "Швидші скрині, таблички, ліжка тощо.\n§9🛠§8 У налаштуваннях відео: підтримувані блоки, анімації, ...",
@@ -55,7 +55,6 @@
     "menu.multiplayerOptions.lan": "Локальна мережа та Інтернет",
     "menu.multiplayerOptions.network.lan.tooltip": "Гравці в тій самій мережі можуть приєднатися через LAN; гравці з будь-якої точки світу можуть приєднатися за адресою, якою ви поділилися.",
     "accessibility.onboarding.screen.narrator": "",
-    "accessibility.onboarding.screen.title": "§6Ласкаво просимо до §eFabulously Optimized§6!§r\n§f🪟§r З’єднані текстури, динамічне освітлення, покращена трава - див. §7Моди§r\n§e✨§r Шейдери та покращені набори ресурсів - просто §7додайте та увімкніть§r\n§5🎮§r Підтримка ігрових контролерів - просто §7під’єднайте та грайте§r\n§3🛜§r Грайте з друзями будь-де - натисніть §7Відкрити для Інтернету§r в одиночній грі",
-    "pack.dropInfo": "Підтримуються додаткові функції наборів ресурсів! Докладніше див. §fМоди§r.",
-    "options.languageAccuracyWarning": "§fДопоможіть перекладати модпак: §7https://download.fo/translate§r"
+    "accessibility.onboarding.screen.title": "Welcome to §7Together Optimized§r!\n\n§f🪟§r Connected Textures and Dynamic Lights - configure in §7Mods§r\n§a🏞§r Better Grass and fullscreen with Alt+Tab - enable in §7Video Settings§r\n§e✨§r Shaders and fancy resource packs - just §7add and enable§r\n§5🎮§r Game controllers supported - simply §7connect and use§r\n§3🛜§r Play with friends - press §7Open to Internet§r in singleplayer, or use voice chat\n§6🥽§r VR supported via Vivecraft when available\n\nPrivate pack for College Debt SMP.",
+    "pack.dropInfo": "Підтримуються додаткові функції наборів ресурсів! Докладніше див. §fМоди§r."
 }

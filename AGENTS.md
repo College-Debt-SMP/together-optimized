@@ -36,7 +36,7 @@ Slugs in `CLI tools/fork-mods.txt` (updated independently of FO). CI refreshes f
 
 | Workflow | Trigger | Role |
 |----------|---------|------|
-| `sync-upstream.yml` | Weekly Mon 12:00 UTC + manual | Merge FO → drop FO-only older Packwiz trees (keep owned + adopt newer MC) → rebrand → fork mods on 2 newest → version/changelog → push **origin** → Release (zip + mrpack) when releasing |
+| `sync-upstream.yml` | Weekly Mon 12:27 UTC + manual | Merge FO → drop FO-only older Packwiz trees (keep owned + adopt newer MC) → rebrand → fork mods on 2 newest → version/changelog → push **origin** → Release (zip + mrpack) when releasing |
 | `update-fork-mods.yml` | Manual | Fork mods on 2 newest folders; release only if mods changed |
 | `publish-modrinth.yml` | Release published + manual | Upload release `.mrpack` to Modrinth (not CurseForge) |
 

@@ -15,6 +15,11 @@ import json
 import re
 from pathlib import Path
 
+try:
+    import tomllib
+except ImportError:  # pragma: no cover
+    import tomli as tomllib  # type: ignore
+
 
 def newest_pack_dir(repo_root: Path) -> Path:
     packwiz = repo_root / "Packwiz"
@@ -25,6 +30,25 @@ def newest_pack_dir(repo_root: Path) -> Path:
     if not versions:
         raise SystemExit("No Packwiz version directories found")
     return versions[-1]
+
+
+def target_pack_dirs(repo_root: Path) -> list[Path]:
+    packwiz = repo_root / "Packwiz"
+    if not packwiz.is_dir():
+        return []
+    newest = newest_pack_dir(repo_root)
+    dirs = [newest]
+    for p in sorted(packwiz.iterdir()):
+        if p.is_dir() and p != newest:
+            pack_toml = p / "pack.toml"
+            if pack_toml.is_file():
+                try:
+                    data = tomllib.loads(pack_toml.read_text(encoding="utf-8"))
+                    if data.get("name") == "Together Optimized":
+                        dirs.append(p)
+                except Exception:
+                    pass
+    return dirs
 
 
 def rebrand_pack_toml(pack_toml: Path, name: str, author: str) -> None:
@@ -100,10 +124,49 @@ def rebrand_crash_assistant(
     print(f"Branded {path}: modpack_name={modpack_name!r} support_name={support_name!r}")
 
 
+def rebrand_resource_pack_lang(repo_root: Path, name: str) -> None:
+    lang_dir = repo_root / "Resource Packs" / "Mod Menu Helper" / "assets" / "fo" / "lang"
+    if not lang_dir.is_dir():
+        return
+    fork_onboarding_title = (
+        f"Welcome to §7{name}§r!\n\n"
+        "§f🪟§r Connected Textures and Dynamic Lights - configure in §7Mods§r\n"
+        "§a🏞§r Better Grass and fullscreen with Alt+Tab - enable in §7Video Settings§r\n"
+        "§e✨§r Shaders and fancy resource packs - just §7add and enable§r\n"
+        "§5🎮§r Game controllers supported - simply §7connect and use§r\n"
+        "§3🛜§r Play with friends - press §7Open to Internet§r in singleplayer, or use voice chat\n"
+        "§6🥽§r VR supported via Vivecraft when available\n\n"
+        "Private pack for College Debt SMP."
+    )
+    for lang_file in sorted(lang_dir.glob("*.json")):
+        try:
+            data = json.loads(lang_file.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        changed = False
+        if "modmenu.dropInfo.line1" in data:
+            val = data["modmenu.dropInfo.line1"]
+            if "Fabulously Optimized" in val:
+                data["modmenu.dropInfo.line1"] = val.replace("Fabulously Optimized", name)
+                changed = True
+        if "accessibility.onboarding.screen.title" in data:
+            val = data["accessibility.onboarding.screen.title"]
+            if name not in val:
+                data["accessibility.onboarding.screen.title"] = fork_onboarding_title
+                changed = True
+        if "options.languageAccuracyWarning" in data:
+            if "download.fo" in data["options.languageAccuracyWarning"]:
+                del data["options.languageAccuracyWarning"]
+                changed = True
+        if changed:
+            lang_file.write_text(json.dumps(data, indent=4, ensure_ascii=False) + "\n", encoding="utf-8")
+            print(f"Branded {lang_file}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parent.parent)
-    parser.add_argument("--pack-dir", type=Path, help="Defaults to newest Packwiz/<mc>/")
+    parser.add_argument("--pack-dir", type=Path, help="Defaults to newest Packwiz/<mc>/ and owned folders")
     parser.add_argument("--name", default="Together Optimized")
     parser.add_argument("--author", default="CherryQuartzio")
     parser.add_argument("--support-name", default="College Debt SMP")
@@ -114,37 +177,44 @@ def main() -> None:
     parser.add_argument("--help-link", default="CHANGE_ME")
     args = parser.parse_args()
 
-    pack_dir = args.pack_dir or newest_pack_dir(args.repo_root)
-    if not pack_dir.is_dir():
-        raise SystemExit(f"Missing pack dir {pack_dir}")
+    if args.pack_dir:
+        pack_dirs = [args.pack_dir]
+    else:
+        pack_dirs = target_pack_dirs(args.repo_root)
 
-    rebrand_pack_toml(pack_dir / "pack.toml", args.name, args.author)
+    for pack_dir in pack_dirs:
+        if not pack_dir.is_dir():
+            raise SystemExit(f"Missing pack dir {pack_dir}")
 
-    credit_paths = [
-        pack_dir / "config" / "isxander-main-menu-credits.json",
-        pack_dir / "config" / "modpack_defaults" / "config" / "isxander-main-menu-credits.json",
-    ]
-    for path in credit_paths:
-        rebrand_credits(path, args.name, args.credits_hover)
+        rebrand_pack_toml(pack_dir / "pack.toml", args.name, args.author)
 
-    loader_paths = [
-        pack_dir / "config" / "fabric_loader_dependencies.json",
-        pack_dir / "config" / "modpack_defaults" / "config" / "fabric_loader_dependencies.json",
-    ]
-    for path in loader_paths:
-        rebrand_fabric_loader(path, args.name)
+        credit_paths = [
+            pack_dir / "config" / "isxander-main-menu-credits.json",
+            pack_dir / "config" / "modpack_defaults" / "config" / "isxander-main-menu-credits.json",
+        ]
+        for path in credit_paths:
+            rebrand_credits(path, args.name, args.credits_hover)
 
-    crash_paths = [
-        pack_dir / "config" / "crash_assistant" / "config.toml",
-        pack_dir / "config" / "modpack_defaults" / "config" / "crash_assistant" / "config.toml",
-    ]
-    for path in crash_paths:
-        rebrand_crash_assistant(
-            path,
-            modpack_name=args.name,
-            support_name=args.support_name,
-            help_link=args.help_link,
-        )
+        loader_paths = [
+            pack_dir / "config" / "fabric_loader_dependencies.json",
+            pack_dir / "config" / "modpack_defaults" / "config" / "fabric_loader_dependencies.json",
+        ]
+        for path in loader_paths:
+            rebrand_fabric_loader(path, args.name)
+
+        crash_paths = [
+            pack_dir / "config" / "crash_assistant" / "config.toml",
+            pack_dir / "config" / "modpack_defaults" / "config" / "crash_assistant" / "config.toml",
+        ]
+        for path in crash_paths:
+            rebrand_crash_assistant(
+                path,
+                modpack_name=args.name,
+                support_name=args.support_name,
+                help_link=args.help_link,
+            )
+
+    rebrand_resource_pack_lang(args.repo_root, args.name)
 
 
 if __name__ == "__main__":

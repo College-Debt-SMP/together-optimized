@@ -481,7 +481,12 @@ def reconcile_folder(
 def markdown_report(results: list[dict], *, target_only: bool = True) -> str:
     lines = ["### Fork mod status", ""]
     if target_only and results:
-        report_results = [results[-1]]
+        if results[-1]["changed"]:
+            report_results = [results[-1]]
+        elif any(r["changed"] for r in results):
+            report_results = [r for r in results if r["changed"]]
+        else:
+            report_results = [results[-1]]
     else:
         report_results = results
 
@@ -611,9 +616,11 @@ def main() -> None:
 
     target_result = results[-1] if results else None
     target_changed = target_result["changed"] if target_result else False
+    any_changed = any(r["changed"] for r in results)
     summary = {
-        "changed": target_changed,
-        "any_changed": any(r["changed"] for r in results),
+        "changed": any_changed,
+        "target_changed": target_changed,
+        "any_changed": any_changed,
         "results": results,
         "markdown": markdown_report(results, target_only=not args.all_mc_versions),
     }

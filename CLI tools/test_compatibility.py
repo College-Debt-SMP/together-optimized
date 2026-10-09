@@ -188,6 +188,37 @@ class TestMarkdownReport(unittest.TestCase):
         self.assertIn("Minecraft 26.1.2", report)
         self.assertIn("5.4.0+26.1.1-fabric", report)
 
+    def test_markdown_report_target_unchanged_fallback(self):
+        results = [
+            {
+                "mc_version": "26.1.2",
+                "pack_dir": "/path/to/26.1.2",
+                "changed": True,
+                "added": [{"slug": "shulkerboxtooltip", "version": "5.4.0+26.1.1-fabric"}],
+                "updated": [],
+                "removed": [],
+                "incompatible": [],
+                "missing": [],
+                "unchanged": [],
+                "errors": [],
+            },
+            {
+                "mc_version": "26.2",
+                "pack_dir": "/path/to/26.2",
+                "changed": False,
+                "added": [],
+                "updated": [],
+                "removed": [],
+                "incompatible": [],
+                "missing": [],
+                "unchanged": ["shulkerboxtooltip"],
+                "errors": [],
+            },
+        ]
+        report = markdown_report(results, target_only=True)
+        self.assertIn("Minecraft 26.1.2", report)
+        self.assertIn("5.4.0+26.1.1-fabric", report)
+
 
 if __name__ == "__main__":
     unittest.main()

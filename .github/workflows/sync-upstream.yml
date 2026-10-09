@@ -6,7 +6,7 @@ name: Sync upstream and update fork mods
 # zip+mrpack GitHub Releases. Never pushes to the upstream repository.
 on:
   schedule:
-    - cron: "0 12 * * 1"
+    - cron: "27 12 * * 1"
   workflow_dispatch:
 
 permissions:
