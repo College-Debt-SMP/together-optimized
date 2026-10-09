@@ -7,3 +7,4 @@ reflex-antilag
 shulkerboxtooltip
 distanthorizons
 vitrail-shaders
+not-enough-animations

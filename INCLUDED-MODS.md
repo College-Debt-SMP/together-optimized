@@ -14,7 +14,7 @@ Mods included in **Together Optimized** (Minecraft 26.3). The selected mods are 
 | [Language Reload](https://www.curseforge.com/minecraft/mc-mods/language-reload) | [Jerozgen](https://www.curseforge.com/members/Jerozgen) | Makes language switching instant, adds a searchbar |
 | [Lithium](https://www.curseforge.com/minecraft/mc-mods/lithium) | [CaffeineMC](https://www.curseforge.com/members/jellysquid3_) | Optimizes game physics and chunk loading |
 | [ModernFix](https://www.curseforge.com/minecraft/mc-mods/modernfix) | [embeddedt](https://www.curseforge.com/members/embeddedt/) | Improves performance, reduces RAM use, fixes bugs |
-| [Nvidium](https://modrinth.com/mod/nvidium) *(Optional)* | [cortex](https://modrinth.com/user/cortex) | Fast NVIDIA-only OpenGL rendering backend for Sodium. Enabled by default; disable if using the experimental Vulkan renderer |
+| [Nvidium](https://modrinth.com/mod/nvidium) *(Optional)* | [cortex](https://modrinth.com/user/cortex) | Fast NVIDIA-only OpenGL rendering backend for Sodium. Disabled by default; enable if using NVIDIA GPU on OpenGL |
 | [Reflex AntiLag](https://modrinth.com/mod/reflex-antilag) | [Tythee](https://modrinth.com/user/Tythee) | Implements NVIDIA Reflex to reduce input latency (OpenGL & Vulkan compatible) |
 | [Remove Reloading Screen](https://www.curseforge.com/minecraft/mc-mods/rrls) | [dimadencep](https://www.curseforge.com/members/dimadencep/) | Makes resource packs load in the background |
 | [Sodium](https://www.curseforge.com/minecraft/mc-mods/sodium) | [CaffeineMC](https://www.curseforge.com/members/jellysquid3_) | Optimizes general rendering to improve FPS, adds some graphics options |
@@ -33,6 +33,7 @@ Mods included in **Together Optimized** (Minecraft 26.3). The selected mods are 
 | [Vitrail Shaders](https://modrinth.com/mod/vitrail-shaders) *(Optional)* | [avpbynf](https://modrinth.com/user/avpbynf) | OptiFine/Iris-format shader pack engine for Minecraft's native Vulkan renderer. Disabled by default; coexists with Iris |
 | [LambDynamicLights](https://www.curseforge.com/minecraft/mc-mods/lambdynamiclights) | [LambdAurora](https://www.curseforge.com/members/LambdAurora) | Adds OptiFine's "dynamic lights" - lights up areas by holding a light source, activating TNT or creeper |
 | [MoreCulling](https://www.curseforge.com/minecraft/mc-mods/moreculling) | [FX_PR0CESS](https://www.curseforge.com/members/fx_pr0cess) | Stops rendering hidden sides of certain blocks |
+| [Not Enough Animations](https://modrinth.com/mod/not-enough-animations) | [tr9zw](https://modrinth.com/user/tr9zw) | Adds first- and third-person animations for eating, drinking, map viewing, boat rowing, and more |
 | [OptiGUI](https://www.curseforge.com/minecraft/mc-mods/optigui) | [opekope2](https://www.curseforge.com/members/opekope2) | Adds OptiFine's custom GUI support |
 | [Paginated Advancements](https://www.curseforge.com/minecraft/mc-mods/paginated-advancements) | [DaFuqsy](https://legacy.curseforge.com/members/dafuqsy/) | Makes the advancement pages bigger, adds a requirement list |
 | [Polytone](https://www.curseforge.com/minecraft/mc-mods/polytone) | [TeamMidnightDust](https://www.curseforge.com/members/mehvahdjukaar/) | Adds OptiFine's custom colors support, additional resource pack features |

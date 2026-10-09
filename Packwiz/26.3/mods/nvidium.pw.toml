@@ -14,5 +14,5 @@ version = "8mVK1zbk"
 
 [option]
 optional = true
-default = true
-description = "Fast NVIDIA-only OpenGL rendering backend. Disable if using the experimental Vulkan renderer."
+default = false
+description = "Fast NVIDIA-only OpenGL rendering backend. Enable if using NVIDIA GPU on OpenGL (incompatible with Vulkan)."

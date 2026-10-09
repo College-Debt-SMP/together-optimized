@@ -376,8 +376,13 @@ hash = "54019b98e621d0ab792d7a2de0f8f2714660e367790b17ffa0ac902344166396"
 metafile = true
 
 [[files]]
+file = "mods/not-enough-animations.pw.toml"
+hash = "d60f63dffcf68f88d6abb0fabd2ba7246831929a41c1179744912d03e3ba28d3"
+metafile = true
+
+[[files]]
 file = "mods/nvidium.pw.toml"
-hash = "cc59d4a20efda8be5bae6ae1eb0d61d0b37360a1e133cefd954a022602cab265"
+hash = "8e53807b917e2df9001d9da63fa43fade8ae1db6ce98853692c16c5be48b96d3"
 metafile = true
 
 [[files]]

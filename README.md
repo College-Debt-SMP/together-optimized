@@ -16,7 +16,7 @@ See [INCLUDED-MODS.md](INCLUDED-MODS.md) for the current mod list.
 
 Minecraft 26.2+ introduces an experimental native **Vulkan** graphics backend alongside OpenGL:
 - **Switching Graphics API:** Options → Video Settings → Graphics API → select **Prefer Vulkan (Experimental)** and restart.
-- **OpenGL (Default):** Iris Shaders and Nvidium (for NVIDIA GPUs) provide accelerated rendering out-of-the-box.
+- **OpenGL (Default):** Iris Shaders provides accelerated shader rendering out-of-the-box. Nvidium (for NVIDIA GPUs on OpenGL) is optional and disabled by default.
 - **Vulkan:** Vitrail Shaders (optional) provides OptiFine/Iris-format shaders. Note that Nvidium and Vivecraft must be disabled when running Vulkan.
 - **Distant Horizons (LoD):** Distant Horizons is compatible with both Vulkan and OpenGL, providing far-terrain rendering with automatic client-server streaming.
 - **Optional Mods:** In `.mrpack` installers (such as Prism Launcher or ATLauncher), players can toggle optional mods (`nvidium`, `vivecraft`, `vitrail-shaders`) during installation.

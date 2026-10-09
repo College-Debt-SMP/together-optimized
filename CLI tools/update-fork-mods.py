@@ -37,8 +37,8 @@ API = "https://api.modrinth.com/v2"
 OPTIONAL_FORK_MODS: dict[str, dict] = {
     "nvidium": {
         "optional": True,
-        "default": True,
-        "description": "Fast NVIDIA-only OpenGL rendering backend. Disable if using the experimental Vulkan renderer.",
+        "default": False,
+        "description": "Fast NVIDIA-only OpenGL rendering backend. Enable if using NVIDIA GPU on OpenGL (incompatible with Vulkan).",
     },
     "vivecraft": {
         "optional": True,
