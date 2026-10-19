@@ -491,7 +491,7 @@ metafile = true
 
 [[files]]
 file = "mods/vitrail-shaders.pw.toml"
-hash = "5de95ee9d6e93e2f43394526779bbeab693f05520a4383b4dc8acd6cb6849bc0"
+hash = "7ca4781c560ad72b0ed0324a49fe9bf14984175562b9c3ace221bb6bb2edd3b1"
 metafile = true
 
 [[files]]

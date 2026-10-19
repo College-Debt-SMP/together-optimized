@@ -457,7 +457,7 @@ metafile = true
 
 [[files]]
 file = "mods/vitrail-shaders.pw.toml"
-hash = "05400bbf39fe7a54681b878a01a6891256911c89b5271b3642ef428e254ac032"
+hash = "b719aecdc1292a72e0eb441589868e59c24690100250d418bca959144eb18bb0"
 metafile = true
 
 [[files]]
@@ -482,7 +482,7 @@ metafile = true
 
 [[files]]
 file = "resourcepacks/Mod Menu Helper.zip"
-hash = "af244f1f6182e8535285cd03786128652cd448ee9d1e93b4f7079aea59d502e5"
+hash = "25ec77fa645a7887a0e7b749c8db3da8855058f3a9cb965eb5a4d8a9a1b4da41"
 
 [[files]]
 file = "resourcepacks/Translations_for_Sodium.pw.toml"

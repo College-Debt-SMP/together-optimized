@@ -1,16 +1,16 @@
 name = "Vitrail Shaders"
-filename = "vitrail-0.12.0-beta+mc26.3.jar"
+filename = "vitrail-0.13.0-beta+mc26.3.jar"
 side = "client"
 
 [download]
-url = "https://cdn.modrinth.com/data/oSIKhgz3/versions/Ul13RHiD/vitrail-0.12.0-beta%2Bmc26.3.jar"
+url = "https://cdn.modrinth.com/data/oSIKhgz3/versions/Q3nKuPKJ/vitrail-0.13.0-beta%2Bmc26.3.jar"
 hash-format = "sha512"
-hash = "d62556fd467646194cffab824c112e6bd10b93f2924affba3e41477d3ff06dae1f7923fde8deb417832ee00c942c9096dd4e9a49f4413703e226cf757d943865"
+hash = "b4915c8251614a3457c7c226f62b7c39c44219a7e5cc6e9a099f55f7a5d171b58e8df7ca9367d72dfc307732a771e3af3c7672879536edacbe1a595105018298"
 
 [update]
 [update.modrinth]
 mod-id = "oSIKhgz3"
-version = "Ul13RHiD"
+version = "Q3nKuPKJ"
 
 [option]
 optional = true
